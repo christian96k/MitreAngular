@@ -1,6 +1,6 @@
-## Demo Description
+# DeasDemo
+An application that organizes and displays the tactics, techniques, and subtechniques of the Mitre ATT&amp;CK framework, including usage relationships with various malicious actors (e.g., APT28). This application allows filtering and visualization of data based on specific threat actor groups, making threat analysis easier.
 
-Rappresentazione di un prototipo che restituisce una pagina nel fomato rappresentato nel mockup di figma: dato un "gruppo" identifiato come attore malevolo rappresentare una descrizione dello stesso, e rappresentata un sottoinsieme delle tecniche sulla base della bolla selezionata ad esso afferente.
 
 ## Demo References
 (https://attack.mitre.org/)
@@ -17,9 +17,18 @@ https://www.figma.com/proto/526imlMQDt7KkcfgAeKcd5/DEAS---AI-SOC-FW?page-id=0%3A
 
 
 
-# DeasDemo
+# DeasDemo Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.
+
+## Open API Mocker
+
+To install the `open-api-mocker` package globally, run the following command:
+```npm i -g open-api-mocker```
+
+## Open API Start Mock Server
+To start the mock server run the `server-start` script:
+```npm run server start```
 
 ## Development server
 
