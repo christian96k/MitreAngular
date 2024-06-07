@@ -1,0 +1,57 @@
+
+
+<main class="hub p-5">
+
+  <section class="hub__card-grid d-grid columns">
+    @if(mitreDataInfo$ | async; as MitreData){
+
+      @if(mitreHerarchyData.length){
+
+        @for( tactic of mitreHerarchyData; track tactic){
+          <div class="card p-3">
+            <h6>
+              {{ tactic.name }}
+            </h6>
+            <small class="fw-bold pb-2" > {{ tactic.id }}</small>
+
+            <div class="card__list">
+              <p> {{'Techniques:'}}</p>
+              <ul>
+                @for( technique of tactic.techniques; track technique){
+                  <li [tooltipShow]="true" tooltip [tooltipText]="technique.name + '-' + technique.external_references[0].external_id">
+                    <span>{{ technique.name }}</span>
+                  </li>
+                    @if(technique.subtechniques?.length){
+                      <p> {{'Subtechniques:'  }} </p>
+                      <ul>
+                        @for( subtechnique of technique.subtechniques; track subtechnique){
+                          <li>
+                            <span [tooltipShow]="true" tooltip [tooltipText]="subtechnique.name + '-' + subtechnique.external_references[0].external_id">{{ subtechnique.name }}</span>
+                          </li>
+                          {{subtechnique.uses?.length}}
+                        }
+                      </ul>
+                    }
+                  }
+              </ul>
+            </div>
+
+          </div>
+        }
+      }
+
+    }@else {
+      <h1>Loading...</h1>
+    }
+  </section>
+
+
+</main>
+
+<button class="btn btn-primary" (click)="onLogout()">
+  Log out
+</button>
+
+
+
+

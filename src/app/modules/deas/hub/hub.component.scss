@@ -1,0 +1,66 @@
+$custom-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  2xl: 1600px,
+);
+
+@mixin custom-media-breakpoint-up($breakpoint) {
+  $breakpoint-value: map-get($custom-breakpoints, $breakpoint);
+  @media (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+.hub{
+
+  &__card-grid {
+    // 1 element found
+    &.single {
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 0.5fr));
+
+      @include custom-media-breakpoint-up(md) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.5fr));
+      }
+
+      @include custom-media-breakpoint-up(lg) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.4fr));
+      }
+
+      @include custom-media-breakpoint-up(xxl) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.3fr));
+      }
+
+      @include custom-media-breakpoint-up(2xl) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.25fr));
+      }
+
+      @include custom-media-breakpoint-up(3xl) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.2fr));
+      }
+    }
+
+    // 2 elements founded
+    .double {
+      @include custom-media-breakpoint-up(xxl) {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 0.3fr));
+      }
+    }
+
+    // Default elements
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 1.5rem;
+
+    @include custom-media-breakpoint-up(2xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include custom-media-breakpoint-up(3xl) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+}
