@@ -1,0 +1,95 @@
+// Font family
+$mainFontFamily: 'Montserrat';
+
+// Font weights
+$ultra-light: 100;
+$light: 200;
+$description: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$extra-bold: 800;
+$fat: 900;
+
+// White
+$pure-white: #FFF;
+
+// Black
+$pure-black: #191A1D;
+
+
+// Gray
+$gray: #ACADB4;
+
+// Primary color
+$primary: #212226;
+
+// Secondary color
+$secondary: #555EA0;
+
+// Success colors
+$success-color: #24A148;
+$success-lighter-color: #b8e0b9;
+$success-darker-color: #2f6a31;
+
+// Error colors
+$error-color: #B00020;
+$error-color-lighter: #edabab;
+$error-color-darker: #7e1b1b;
+
+// Warning loading colors
+$warning-color: #F1B51B;
+$warning-color-lighter: #fcd79c;
+$warning-color-darker: #955d04;
+
+
+
+// Borders
+$border-chips: 0.75rem;
+$border-radius-01: 0.1rem;
+$border-radius-02: 0.2rem;
+$border-radius-03: 0.3rem;
+$border-radius-04: 0.4rem;
+$border-radius-05: 0.5rem;
+$border-radius-1: 1rem;
+$border-radius-1: 1rem;
+$border-radius-2: 2rem;
+$border-radius-3: 3rem;
+$border-radius-4: 4rem;
+$border-radius-5: 5rem;
+
+//#region change theme based on product
+$products: (
+  deas: (
+    primary: $primary,
+    secondary: $secondary,
+    gray: $gray,
+    black: $pure-black,
+    white: $pure-white,
+  )
+);
+//#endregion color-system
+
+// #region z-index values
+$z-index-0: 0;
+$z-index-100: 100;
+$z-index-negative: $z-index-0 - $z-index-100;
+$z-index-max: 9999;
+$z-index-modal: $z-index-max - $z-index-100;
+// #endregion z-index values
+
+
+// Light Theme Text
+$dark-primary-text: rgba($pure-black, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+// Dark Theme text
+$light-primary-text: $pure-white;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);

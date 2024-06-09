@@ -1,19 +1,5 @@
-$custom-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
-  2xl: 1600px,
-);
-
-@mixin custom-media-breakpoint-up($breakpoint) {
-  $breakpoint-value: map-get($custom-breakpoints, $breakpoint);
-  @media (min-width: $breakpoint-value) {
-    @content;
-  }
-}
+@import 'mixin';
+@import 'custom-bootstrap';
 
 .hub{
 
@@ -62,5 +48,23 @@ $custom-breakpoints: (
       grid-template-columns: repeat(5, 1fr);
     }
   }
+
+
+  .cluster-container{
+    display: grid;
+    border: 1px solid green;
+     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+     grid-gap: 1.0rem;
+
+    @include custom-media-breakpoint-up(2xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include custom-media-breakpoint-up(3xl) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+
 
 }

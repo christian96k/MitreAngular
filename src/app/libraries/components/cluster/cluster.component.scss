@@ -1,0 +1,24 @@
+@import "variables";
+
+
+@mixin cluster-background(){
+  background: linear-gradient(0deg, #555EA0 0%, #7385BE 100%);
+}
+
+@mixin cluster-background-active(){
+  background: linear-gradient(0deg, #AF4F0E 0%, #EE9612 100%);
+}
+
+.cluster{
+  background-color: $secondary;
+  color: $pure-white;
+  border-radius: 100%;
+
+  @include cluster-background();
+
+  &.active{
+    @include cluster-background-active();
+  }
+
+}
+

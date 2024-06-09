@@ -1,0 +1,13 @@
+@import 'variables';
+
+.custom-tooltip {
+  position: absolute;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: $z-index-max;
+  background-color: gray!important;
+  max-width: 17rem;
+  color: $pure-white;
+  word-wrap: break-word;
+  font-size: 12px;
+}

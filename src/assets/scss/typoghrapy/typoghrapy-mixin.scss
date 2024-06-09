@@ -1,0 +1,153 @@
+@mixin fw-100 {
+  font-weight: $ultra-light !important;
+}
+
+@mixin fw-200 {
+  font-weight: $light !important;
+}
+
+@mixin fw-300 {
+  font-weight: $description !important;
+}
+
+@mixin fw-400 {
+  font-weight: $semibold !important;
+}
+
+@mixin fw-500 {
+  font-weight: $medium !important;
+}
+
+@mixin fw-600 {
+  font-weight: $semibold !important;
+}
+
+@mixin fw-700 {
+  font-weight: $bold !important;
+}
+
+@mixin fw-800 {
+  font-weight: $extra-bold !important;
+}
+
+@mixin fw-800 {
+  font-weight: $fat !important;
+}
+
+// ----- Font -----
+@mixin main-font {
+  font-family: $mainFontFamily !important;
+}
+
+@mixin italic {
+  font-style: italic !important;
+}
+
+@mixin normal {
+  font-style: normal !important;
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+}
+// ----- Font -----
+
+@mixin h1 {
+  font-size: 48px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin h2 {
+  font-size: 34px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin h3 {
+  font-size: 28px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin h4 {
+  font-size: 24px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin h5 {
+  font-size: 20px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin h6 {
+  font-size: 18px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+
+@mixin title {
+  font-size: 24px !important;
+  font-weight: $semibold !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin subtitle {
+  font-size: 16px !important;
+  font-weight: $regular !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin paragraph{
+  font-size: 14px !important;
+  font-weight: $regular !important;
+  line-height: 20.8px;
+  letter-spacing: 0.24px;
+  @include main-font;
+}
+
+@mixin description{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: $description;
+  line-height: 20.8px;
+  letter-spacing: 0.196px;
+  @include main-font;
+
+}
+
+@mixin caption{
+  font-size: 12px !important;
+  font-weight: $regular !important;
+  line-height: 20.8px;
+  letter-spacing: 0.12px;
+  @include main-font;
+}
+
+@mixin caption-xsmall{
+  font-size: 10px !important;
+  font-weight: $regular !important;
+  line-height: 20.8px;
+  letter-spacing: 0.1px;
+  @include main-font;
+}
+

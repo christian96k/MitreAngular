@@ -1,0 +1,125 @@
+@import "mixin";
+
+// ------------- UTILITIES --------------
+
+.background-primary {
+  @include generate-style("background-color", primary);
+}
+
+.background-secondary {
+  @include generate-style("background-color", secondary);
+}
+
+
+.color-primary{
+  @include generate-style("color", primary);
+}
+
+.color-secondary{
+  @include generate-style("color", secondary);
+}
+
+
+.border-primary {
+  border: 2px solid;
+  @include generate-style("border-color", primary);
+}
+
+.border-secondary {
+  border: 2px solid;
+  @include generate-style("border-color", secondary);
+}
+
+
+.background-gray {
+  @include generate-style("background-color", gray);
+}
+
+.color-gray {
+  @include generate-style("color", gray);
+}
+
+.color-success {
+  color: $success-color;
+}
+
+.color-warning {
+  color: $warning-color;
+}
+
+.color-error {
+  color: $error-color;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-help {
+  cursor: help !important;
+}
+
+.cursor-wait {
+  cursor: wait !important;
+}
+
+.cursor-crosshair {
+  cursor: crosshair !important;
+}
+
+.cursor-text {
+  cursor: text !important;
+}
+
+.cursor-move {
+  cursor: move !important;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
+.cursor-grab {
+  cursor: grab !important;
+}
+
+.cursor-grabbing {
+  cursor: grabbing !important;
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.text-dotted {
+  text-decoration: dotted !important;
+}
+
+.text-line-through {
+  text-decoration: line-through !important;
+}
+
+.text-overline {
+  text-decoration: overline !important;
+}
+
+.text-none {
+  text-decoration: none !important;
+}
+
+
+.h-100vh {
+  height: 100vh !important;
+}
+
+.h-75vh {
+  height: 75vh !important;
+}
+
+.gap-12{
+  gap: 12px;
+}

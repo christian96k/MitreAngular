@@ -1,0 +1,63 @@
+@import "variables";
+@import "functions";
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 790px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  2xl: 1700px,
+  3xl: 2000px,
+);
+
+// Breakpoint variables
+$xs-breakpoint: getGridBreakpoint(xs);
+$sm-breakpoint: getGridBreakpoint(sm);
+$md-breakpoint: getGridBreakpoint(md);
+$lg-breakpoint: getGridBreakpoint(lg);
+$xl-breakpoint: getGridBreakpoint(xl);
+$xxl-breakpoint: getGridBreakpoint(xxl);
+$doubleXl-breakpoint: getGridBreakpoint(2xl);
+$tripleXl-breakpoint: getGridBreakpoint(3xl);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  2xl: 1690px,
+  3xl: 1990px,
+);
+
+.container {
+  padding: pxtorem(26);
+}
+
+
+$custom-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  2xl: 1600px,
+);
+
+@mixin custom-media-breakpoint-up($breakpoint) {
+  $breakpoint-value: map-get($custom-breakpoints, $breakpoint);
+  @media (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+@mixin custom-media-breakpoint-down($breakpoint) {
+  $breakpoint-value: map-get($custom-breakpoints, $breakpoint);
+  @media (max-width: $breakpoint-value) {
+    @content;
+  }
+}

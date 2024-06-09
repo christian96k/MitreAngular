@@ -1,0 +1,19 @@
+@use "sass:math";
+@use 'sass:map';
+
+@function pxtorem($value) {
+  @return math.div($value, 16) + rem;
+}
+
+@function getGridBreakpoint($value) {
+  @return map.get($grid-breakpoints, $value);
+}
+
+
+@function product-selector($product-name){
+  @return 'body[data-product="#{$product-name}"] &';
+}
+
+@function product-color($product-name, $color-name){
+  @return map_get(map_get($products, $product-name), $color-name);
+}

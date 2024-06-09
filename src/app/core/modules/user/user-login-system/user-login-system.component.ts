@@ -5,21 +5,21 @@ import { AuthService } from '@auth0/auth0-angular';
 import { UserFacade } from '../store/user.facade';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
-// import { LoaderComponent } from '@src/app/libraries/ui-kit/components/loader/loader.component';
 import { Auth0Error } from '../models/user.model';
 import { UserService } from '../service/user.service';
 import { APP } from '../../../../shared/routes/route.model';
+import { LoaderComponent } from '../../../../libraries/components/loader/loader.component';
 
 
-// const UI_USER_LOGIN = [
-//   LoaderComponent
-// ];
+const UI_USER_LOGIN = [
+  LoaderComponent
+];
 
 @Component({
   selector: 'app-user-login-system',
   standalone: true,
   imports: [
-    // ...UI_USER_LOGIN,
+    ...UI_USER_LOGIN,
     CommonModule
   ],
   templateUrl: './user-login-system.component.html',

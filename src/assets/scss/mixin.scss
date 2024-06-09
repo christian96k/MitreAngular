@@ -1,0 +1,20 @@
+
+//#region change theme base on product
+@mixin generate-style($style-key, $color-name, $is-component: false) {
+  #{$style-key}: $color-name;
+  @each $product-name in map_keys($products) {
+    $product-selector: product-selector($product-name);
+    @if $is-component == true {
+      ::ng-deep #{$product-selector} {
+        #{$style-key}: product-color($product-name, $color-name) !important;
+      }
+    } @else {
+      #{$product-selector} {
+        #{$style-key}: product-color($product-name, $color-name) !important;
+      }
+    }
+  }
+}
+
+
+//#endregion change theme base on product

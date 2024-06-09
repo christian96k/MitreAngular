@@ -2,6 +2,7 @@
 export const APP = {
   // app domain
   DEAS: 'deas',
+  TEST: 'test',
 };
 
 

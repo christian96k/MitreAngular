@@ -1,5 +1,5 @@
 import { MitreAttackInfo } from './../../../shared/model/mitre.model';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../../core/modules/user/service/user.service';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,12 @@ import { TooltipDirective } from '../../../libraries/directives/tooltip.directiv
 import { HACKERS } from '../../../shared/constants/groupHackers.model';
 import { ExtendedMitreAttackInfo } from './models/hub.models';
 import { HubService } from './services/hub.service';
+import { LoaderComponent } from '../../../libraries/components/loader/loader.component';
+import { CardComponent } from '../../../libraries/components/card/card.component';
+import { CardAction, CardConfig, CardIcon } from '../../../libraries/models/card.model';
+import { MitreAttackComponent } from '../../../libraries/components/mitre-attack/mitre-attack.component';
+import { ClusterComponent } from '../../../libraries/components/cluster/cluster.component';
+import { ClusterConfig } from '../../../libraries/models/cluster.model';
 
 
 
@@ -24,13 +30,22 @@ const DIRECTIVES_HUB = [
   TooltipDirective
 ]
 
+const UI_KIT_HUB = [
+  MitreAttackComponent,
+  LoaderComponent,
+  CardComponent,
+  ClusterComponent
+]
+
+
 
 @Component({
   selector: 'app-hub',
   standalone: true,
   imports: [
     ...MODULES_HUB,
-    ...DIRECTIVES_HUB
+    ...DIRECTIVES_HUB,
+    ...UI_KIT_HUB
   ],
   templateUrl: './hub.component.html',
   styleUrl: './hub.component.scss',
@@ -59,6 +74,9 @@ export class HubComponent {
   public mitreHerarchyDataAPT28: ExtendedMitreAttackInfo[] = [];
 
 
+  public clusters: ClusterConfig[] = [];
+
+
   constructor(
   ) {
     this.hubFacade.getMitreData();
@@ -72,7 +90,10 @@ export class HubComponent {
   ).subscribe((data: MitreAttackData) => {
 
     this.mitreHerarchyData = this.hubService.mapMitreData(data);
-    this.mitreHerarchyDataAPT28 = this.hubService.filterByActorRecursive(this.mitreHerarchyData, HACKERS.APT28);
+    // this.mitreHerarchyDataAPT28 = this.hubService.filterByActorRecursive(this.mitreHerarchyData, HACKERS.APT28);
+
+
+    this.clusters = this.mitreHerarchyData.map((mitreAttackInfo: ExtendedMitreAttackInfo) => this.createCluster(mitreAttackInfo));
 
     console.log("tacticsWithTechniquesAndSubtechniquesAndUses", this.mitreHerarchyData);
     console.log("tacticsWithTechniquesAndSubtechniquesAndUsesFiltered", this.mitreHerarchyDataAPT28);
@@ -90,5 +111,43 @@ export class HubComponent {
   }
 
 
+
+  public cardConfig:CardConfig = {
+    header:{
+      label: 'Tecnica:',
+      class: '',
+      value: 'Virus total Placeholder'
+    },
+    footer: [
+      {
+        icon: CardIcon.info,
+        action: (actionType) => console.log('action_:::', actionType),
+        actionType: CardAction.INFO
+      },
+      {
+        icon: CardIcon.settings,
+        action: (actionType) => console.log('action_:::', actionType),
+        actionType: CardAction.SETTINGS
+      }
+    ]
+  }
+
+  private createCluster(mitreAttackInfo:ExtendedMitreAttackInfo):ClusterConfig{
+
+    return{
+      name: mitreAttackInfo.name,
+      id: mitreAttackInfo.id,
+      active: false,
+      select: (mitreInfo:ClusterConfig) => this.onCluserSelect(mitreInfo),
+      techniques: mitreAttackInfo.techniques,
+      uses: mitreAttackInfo.uses,
+      externalID: mitreAttackInfo.external_references[0].external_id,
+      size: 7
+    }
+  }
+
+  private onCluserSelect(cluster: ClusterConfig): void {
+    this.clusters = this.clusters.map((_cluster) => _cluster.id === cluster.id ? { ..._cluster, active: !_cluster.active } : _cluster);
+  }
 
 }

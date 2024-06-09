@@ -1,0 +1,29 @@
+@import "variables";
+
+@mixin chip-background{
+  background: linear-gradient(79deg, rgba(103, 104, 115, 0.30) -0.78%, rgba(103, 104, 115, 0.80) 102.35%);
+}
+
+@mixin chip-background-dark{
+  background:#191A1D;;
+}
+
+$chip-padding: 8px 12px;
+$chip-border-radius: 12px;
+
+
+.chip{
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: $chip-padding;
+  border-radius: $chip-border-radius;
+  @include chip-background;
+  &.dark{
+    @include chip-background-dark;
+    color: $pure-white;
+  }
+}
+
+
+

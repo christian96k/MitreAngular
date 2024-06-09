@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import "theme";
+
 
 // <!-- FIXME: ADD COLOR SETS -->
 // <!-- #6574b1 -->
@@ -7,15 +8,5 @@
 // <!-- #252528 -->
 
 
-// TODO: MOVE
-.custom-tooltip {
-  position: absolute;
-  padding: 5px 10px;
-  border-radius: 5px;
-  z-index: 99999;
-  background-color: #6574b1 !important;
-  max-width: 17rem;
-  color:  #FFFFFF;
-  font-size: 12px;
-  word-wrap: break-word;
-}
+
+

@@ -1,0 +1,35 @@
+@if(cardConfig()){
+  <div class="card caption p-0">
+
+    <!-- HEADER -->
+    @if(cardConfig().header){
+
+      <div class="card__header {{cardConfig().header.class}} p-3">
+        <div class="fw-500">
+          <span >
+            {{cardConfig().header.label}}
+          </span>
+        </div>
+        <div class="card__body fw-300">
+          <span>
+            {{cardConfig().header.value}}
+          </span>
+        </div>
+      </div>
+    }
+
+    <!-- FOOTER -->
+    @if(cardConfig().footer){
+      <div class="card__footer w-100 d-flex justify-content-between py-2 px-4">
+        @for(cta of cardConfig().footer; track cta ){
+          <i class="cursor-pointer fa fa-regular {{cta.icon}}" (click)="cta.action(cta.actionType)"></i>
+        }
+      </div>
+    }
+
+  </div>
+
+
+
+}
+

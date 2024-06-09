@@ -1,0 +1,55 @@
+@import "variables";
+
+
+@mixin mitre-box(){
+  border-radius: 24px 0px 0px 24px;
+  border: 1px solid  rgba(255, 255, 255, 0.00);
+  padding: 24px;
+  background: linear-gradient(0deg, rgba(25, 26, 29, 0.20) 0%, rgba(25, 26, 29, 0.20) 100%), #232428;
+  backdrop-filter: blur(10px);
+}
+
+@mixin mitre-description-text(){
+  margin-top: 7.5px;
+  padding: 12px 12px 12px 24px;
+  border-radius: 8px;
+  background: $pure-black;
+  line-height: 20.8px;
+  letter-spacing: 0.196px!important;
+}
+
+@mixin mitre-separator(){
+  border: 1.411px solid transparent;
+  border-image: linear-gradient(to right, rgba(255, 255, 255, 0), #555EA0, rgba(255, 255, 255, 0)) 1;
+}
+
+@mixin mitre-phase(){
+  border-radius: 24px;
+  border: 1px solid  rgba(85, 94, 160, 0.10);
+  background: linear-gradient(0deg, rgba(25, 26, 29, 0.20) 0%, rgba(25, 26, 29, 0.20) 100%), linear-gradient(188deg, rgba(53, 53, 58, 0.27) -8.13%, rgba(103, 104, 115, 0.21) 112.6%);
+  backdrop-filter: blur(10px);
+}
+
+.mitre-attack{
+
+  @include mitre-box();
+
+  &__separator{
+   @include mitre-separator();
+  }
+
+  &__info{
+    &__description__box{
+      &__text{
+        @include mitre-description-text();
+      }
+    }
+  }
+
+  &__footer{
+    &__phase{
+    @include mitre-phase();
+    }
+  }
+
+}

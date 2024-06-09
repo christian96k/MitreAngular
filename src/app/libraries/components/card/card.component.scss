@@ -1,0 +1,40 @@
+@import "variables";
+
+
+
+$card-border: 1px solid rgba(215, 215, 215, 0.70);
+$card-padding: 12px;
+$card-border-radius: 8px;
+$card-background-gradient: linear-gradient(261deg, #3A3A41 -6.16%, #2E2D35 103.1%);
+$card-backdrop-filter: blur(25px);
+
+@mixin card-polygon-background {
+  background:
+    url("../../../../assets/images/card/polygon.svg") right center no-repeat,
+    $card-background-gradient
+}
+
+
+
+.card {
+  padding: $card-padding;
+  border-radius: $card-border-radius;
+  border: $card-border;
+  backdrop-filter: $card-backdrop-filter;
+  color:$pure-white;
+
+  @include card-polygon-background();
+
+  &__header{
+    margin-bottom: 12px;
+  }
+
+  &__footer{
+    border-top: 1px solid red;
+    backdrop-filter: blur(25px);
+    border-bottom-left-radius: $card-border-radius;
+    border-bottom-right-radius: $card-border-radius;
+
+  }
+
+}

@@ -18,9 +18,10 @@ export const routes: Routes = [
     component:AppComponent,
     children: [...routesDeas],
   },
+
   {
   path: ROUTE.USER_AUTH,
-  component: UserLoginSystemComponent
+    component: UserLoginSystemComponent
   },
 
 

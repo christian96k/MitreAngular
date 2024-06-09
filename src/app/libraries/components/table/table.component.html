@@ -1,15 +1,35 @@
-<div class="table card">
+@if(tableConfig()){
 
-  <div class="table__header">
+  <div class="table-mitre">
+
+    @if(tableConfig().header){
+      <div class="table-mitre__header pb-3 row">
+        @for(header of tableConfig().header; track header){
+          <div class="{{header.size}}  text-start font-weight-bold">
+            <span class="paragraph">
+              {{header.label}}
+            </span>
+          </div>
+        }
+      </div>
+    }
+
+    @if(tableConfig().content){
+
+
+      <div class="table-mitre__content row">
+        @for(row of tableConfig().content; track row){
+          <div class="{{row.size}} ps-0 {{row.class}}">
+            @for(chip of row.chips; track chip){
+              <app-chip [chipConfig]="chip"></app-chip>
+            }
+          </div>
+        }
+      </div>
+    }
+
 
   </div>
 
+}
 
-  <div class="content">
-
-
-  </div>
-
-
-
-</div>
