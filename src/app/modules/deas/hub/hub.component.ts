@@ -139,7 +139,7 @@ export class HubComponent {
   public hackerType = HackerType;
 
   constructor() {
-    this.hubFacade.getMitreData(HackerType.APT28);
+    this.hubFacade.getMitreData(HackerType.GENERIC);
   }
 
   /**
