@@ -139,7 +139,7 @@ export class HubComponent {
   public hackerType = HackerType;
 
   constructor() {
-    this.hubFacade.getMitreData();
+    this.hubFacade.getMitreData(HackerType.APT28);
   }
 
   /**
@@ -159,7 +159,8 @@ export class HubComponent {
    * @public
    */
   public filter(hackerType: HackerType): void {
-    this.hubFacade.filtreMitreData(this.mitreHerarchyData, hackerType);
+    this.hubFacade.getMitreData(hackerType);
+    this.hubFacade.filtreMitreData(this.hubService.filterByActorRecursive(this.mitreHerarchyData, hackerType), hackerType);
   }
 
   /**

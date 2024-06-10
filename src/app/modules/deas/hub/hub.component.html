@@ -9,23 +9,6 @@
     </button>
   </section>
 
-  @if(mitreDataFilter$ | async; as MitreFilter){
-
-    <section class="hub__components">
-      <button class="{{ MitreFilter === hackerType.GENERIC ? 'active' : ''}}" (click)="filter(hackerType.GENERIC)">
-        {{'GENERIC'}}
-      </button>
-
-      <button class="{{ MitreFilter === hackerType.APT28 ? 'active' : ''}}" (click)="filter(hackerType.APT28)">
-        {{'APT 28'}}
-      </button>
-
-      <button class="{{ MitreFilter === hackerType.APT29 ? 'active' : ''}}" (click)="filter(hackerType.APT29)">
-        {{'APT 29'}}
-      </button>
-    </section>
-  }
-
 
   <div class="hub__content container-lg px-lg-4">
     <app-mitre-attack/>

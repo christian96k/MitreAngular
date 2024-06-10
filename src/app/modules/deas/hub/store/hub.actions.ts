@@ -6,7 +6,9 @@ import { ExtendedMitreAttackInfo } from '../models/hub.models';
  * Action to initiate the retrieval of Mitre data.
  * @returns {Action} The get Mitre data action.
  */
-export const getMitreData = createAction('[Get Mitre Data] Get Mitre Data');
+export const getMitreData = createAction('[Get Mitre Data] Get Mitre Data',
+  props<{filter: HackerType }>()
+);
 
 /**
  * Action dispatched when Mitre data retrieval is successful.
@@ -15,7 +17,7 @@ export const getMitreData = createAction('[Get Mitre Data] Get Mitre Data');
  */
 export const getMitreDataSuccess = createAction(
   '[Get Mitre Data Success] Get Mitre Data success',
-  props<{ mitreAttackData: ExtendedMitreAttackInfo[] }>()
+  props<{ mitreAttackData: ExtendedMitreAttackInfo[], filter: HackerType }>()
 );
 
 /**

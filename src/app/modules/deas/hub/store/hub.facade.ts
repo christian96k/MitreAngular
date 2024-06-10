@@ -34,8 +34,8 @@ export class HubFacade {
   /**
    * Dispatches an action to fetch Mitre data.
    */
-  public getMitreData(): void {
-    this.store.dispatch(getMitreData());
+  public getMitreData(filter:HackerType): void {
+    this.store.dispatch(getMitreData({filter}));
   }
 
   /**

@@ -4,6 +4,7 @@ import { map, switchMap } from "rxjs/operators";
 import { of } from "rxjs";
 import { HubService } from "../services/hub.service";
 import { filterMitreData, filterMitreDataSuccess, getMitreData, getMitreDataSuccess } from "./hub.actions";
+import { HackerType } from "../../../../shared/constants/groupHackers.model";
 
 /**
  * Effects class for the Hub module.
@@ -27,11 +28,14 @@ export class HubEffects {
   public getMitreData = createEffect(() =>
     this.actions$.pipe(
       ofType(getMitreData),
-      switchMap(() => {
+      switchMap(({filter}) => {
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) => getMitreDataSuccess({ mitreAttackData: this.hubService.mapMitreData(response) }))
+            map((response) => getMitreDataSuccess({
+              mitreAttackData: filter === HackerType.GENERIC ?
+              this.hubService.mapMitreData(response)
+              : this.hubService.filterByActorRecursive(this.hubService.mapMitreData(response), filter), filter: filter }))
           );
       })
     )

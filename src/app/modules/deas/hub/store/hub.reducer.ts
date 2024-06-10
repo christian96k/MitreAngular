@@ -36,6 +36,6 @@ const initialState: HubState = {
  */
 export const hubReducer = createReducer(
   initialState,
-  on(getMitreDataSuccess, (state, { mitreAttackData }) => ({ ...state, data: mitreAttackData })),
+  on(getMitreDataSuccess, (state, { mitreAttackData, filter }) => ({ ...state, data: mitreAttackData, filter: filter })),
   on(filterMitreDataSuccess, (state, { mitreAttackData, filter }) => ({ ...state, data: mitreAttackData, filter: filter })),
 );
