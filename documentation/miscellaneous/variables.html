@@ -151,12 +151,6 @@
                             <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
                         </li>
                         <li>
-                            <a href="#filterMitreData" title="src/app/modules/deas/hub/store/hub.actions.ts" ><b>filterMitreData</b>&nbsp;&nbsp;&nbsp;(src/.../hub.actions.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#filterMitreDataSuccess" title="src/app/modules/deas/hub/store/hub.actions.ts" ><b>filterMitreDataSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../hub.actions.ts)</a>
-                        </li>
-                        <li>
                             <a href="#getMitreData" title="src/app/modules/deas/hub/store/hub.actions.ts" ><b>getMitreData</b>&nbsp;&nbsp;&nbsp;(src/.../hub.actions.ts)</a>
                         </li>
                         <li>
@@ -194,9 +188,6 @@
                         </li>
                         <li>
                             <a href="#mitreData$" title="src/app/modules/deas/hub/store/hub.selectors.ts" ><b>mitreData$</b>&nbsp;&nbsp;&nbsp;(src/.../hub.selectors.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#mitreDataFilter$" title="src/app/modules/deas/hub/store/hub.selectors.ts" ><b>mitreDataFilter$</b>&nbsp;&nbsp;&nbsp;(src/.../hub.selectors.ts)</a>
                         </li>
                         <li>
                             <a href="#MODULES_CORE_DEAS" title="src/app/modules/deas/deas.component.ts" ><b>MODULES_CORE_DEAS</b>&nbsp;&nbsp;&nbsp;(src/.../deas.component.ts)</a>
@@ -266,7 +257,6 @@
   const userFacade &#x3D; inject(UserFacade);
   const authService &#x3D; inject(AuthService);
 
-  console.log(&#x27;interceptor&#x27;);
   return authService.getAccessTokenSilently().pipe(
     switchMap((token) &#x3D;&gt; {
       if (!token) {
@@ -1136,64 +1126,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="filterMitreData"></a>
-                    <span class="name">
-                        <span ><b>filterMitreData</b></span>
-                        <a href="#filterMitreData"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createAction(
-  &#x27;[Filter Mitre Data] Filter Mitre Data&#x27;,
-  props&lt;{ mitreAttackData: ExtendedMitreAttackInfo[], filter: HackerType }&gt;()
-)</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Action to initiate the filtering of Mitre data.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="filterMitreDataSuccess"></a>
-                    <span class="name">
-                        <span ><b>filterMitreDataSuccess</b></span>
-                        <a href="#filterMitreDataSuccess"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createAction(
-  &#x27;[Filter Mitre Data Success] Filter Mitre Data success&#x27;,
-  props&lt;{ mitreAttackData: ExtendedMitreAttackInfo[], filter: HackerType }&gt;()
-)</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Action dispatched when Mitre data filtering is successful.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getMitreData"></a>
                     <span class="name">
                         <span ><b>getMitreData</b></span>
@@ -1203,7 +1135,9 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>createAction(&#x27;[Get Mitre Data] Get Mitre Data&#x27;)</code>
+                        <i>Default value : </i><code>createAction(&#x27;[Get Mitre Data] Get Mitre Data&#x27;,
+  props&lt;{filter: HackerType }&gt;()
+)</code>
                     </td>
                 </tr>
 
@@ -1231,7 +1165,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>createAction(
   &#x27;[Get Mitre Data Success] Get Mitre Data success&#x27;,
-  props&lt;{ mitreAttackData: ExtendedMitreAttackInfo[] }&gt;()
+  props&lt;{ mitreAttackData: ExtendedMitreAttackInfo[], filter: HackerType }&gt;()
 )</code>
                     </td>
                 </tr>
@@ -1608,35 +1542,6 @@
 
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mitreDataFilter$"></a>
-                    <span class="name">
-                        <span ><b>mitreDataFilter$</b></span>
-                        <a href="#mitreDataFilter$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createSelector(
-  hubFeature,
-  ({ filter }) &#x3D;&gt; filter
-)</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Selector to retrieve the Mitre data filter from the Hub feature state.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
 </section>
     <h3>src/app/modules/deas/hub/store/hub.reducer.ts</h3>
     <section data-compodoc="block-properties">
@@ -1687,8 +1592,8 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>createReducer(
   initialState,
-  on(getMitreDataSuccess, (state, { mitreAttackData }) &#x3D;&gt; ({ ...state, data: mitreAttackData })),
-  on(filterMitreDataSuccess, (state, { mitreAttackData, filter }) &#x3D;&gt; ({ ...state, data: mitreAttackData, filter: filter })),
+  on(getMitreData, (state, { filter }) &#x3D;&gt; ({ ...state, data: initialState.data, filter: filter })),
+  on(getMitreDataSuccess, (state, { mitreAttackData, filter }) &#x3D;&gt; ({ ...state, data: mitreAttackData, filter: filter })),
 )</code>
                     </td>
                 </tr>

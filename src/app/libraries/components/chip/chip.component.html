@@ -1,7 +1,7 @@
 @if(chipConfig()){
   <div class="chip {{chipConfig().isDark ? 'dark': ''}} caption  {{chipConfig().class}}  {{chipConfig().icon ? 'border-gradient':''}}" >
     @if(chipConfig().icon){
-      <i class="fa fa-regular {{chipConfig().icon}} fa-vk pe-2"></i>
+      <i class="{{chipConfig().icon}} pe-2"></i>
     }
     {{chipConfig().label}}
   </div>

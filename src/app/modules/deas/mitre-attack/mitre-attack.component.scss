@@ -44,6 +44,8 @@
   &.single{
     grid-template-columns: repeat(auto-fit, minmax(6.5rem, 0.21fr));
   }
+  overflow: auto;
+  max-height: 25.10rem;
 }
 
 .mitre-attack{

@@ -318,7 +318,7 @@ export class ChipComponent {
         <pre class="line-numbers"><code class="language-html">@if(chipConfig()){
   &lt;div class&#x3D;&quot;chip {{chipConfig().isDark ? &#x27;dark&#x27;: &#x27;&#x27;}} caption  {{chipConfig().class}}  {{chipConfig().icon ? &#x27;border-gradient&#x27;:&#x27;&#x27;}}&quot; &gt;
     @if(chipConfig().icon){
-      &lt;i class&#x3D;&quot;fa fa-regular {{chipConfig().icon}} fa-vk pe-2&quot;&gt;&lt;/i&gt;
+      &lt;i class&#x3D;&quot;{{chipConfig().icon}} pe-2&quot;&gt;&lt;/i&gt;
     }
     {{chipConfig().label}}
   &lt;/div&gt;
@@ -353,7 +353,7 @@ export class ChipComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if(chipConfig()){  <div class="chip {{chipConfig().isDark ? \'dark\': \'\'}} caption  {{chipConfig().class}}  {{chipConfig().icon ? \'border-gradient\':\'\'}}" >    @if(chipConfig().icon){      <i class="fa fa-regular {{chipConfig().icon}} fa-vk pe-2"></i>    }    {{chipConfig().label}}  </div>}</div>'
+        var COMPONENT_TEMPLATE = '<div>@if(chipConfig()){  <div class="chip {{chipConfig().isDark ? \'dark\': \'\'}} caption  {{chipConfig().class}}  {{chipConfig().icon ? \'border-gradient\':\'\'}}" >    @if(chipConfig().icon){      <i class="{{chipConfig().icon}} pe-2"></i>    }    {{chipConfig().label}}  </div>}</div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'ChipComponent', 'selector': 'app-chip'},{'name': 'ChipsetComponent', 'selector': 'app-chip-set'},{'name': 'ClusterComponent', 'selector': 'app-cluster'},{'name': 'DeasComponent', 'selector': 'app-deas'},{'name': 'HubComponent', 'selector': 'app-hub'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MitreAttackComponent', 'selector': 'app-mitre-attack'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'UserLoginSystemComponent', 'selector': 'app-user-login-system'}];
     var DIRECTIVES = [{'name': 'TooltipDirective', 'selector': '[tooltip]'}];
     var ACTUAL_COMPONENT = {'name': 'ChipComponent'};

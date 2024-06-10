@@ -5,6 +5,7 @@
 button{
   @include generate-style("background-color", secondary);
   @include generate-style("color", gray);
+  @include paragraph();
   border-radius: $border-radius-05 !important;;
   padding: 0.375rem 0.75rem;
   border: 1px solid transparent;

@@ -79,6 +79,7 @@ export enum CardAction {
  * Enum representing different icons for a card component.
  */
 export enum CardIcon {
-  info = 'fa fa-info-circle',
-  settings = 'fa fa-gear',
+  info = 'icon-info',
+  settings = 'icon-settings',
+  vrius = 'icon-virus',
 }

@@ -244,7 +244,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { createReducer, on } from &#x27;@ngrx/store&#x27;;
 import { HackerType } from &#x27;../../../../shared/constants/groupHackers.model&#x27;;
 import { ExtendedMitreAttackInfo } from &#x27;../models/hub.models&#x27;;
-import { getMitreDataSuccess, filterMitreDataSuccess } from &#x27;./hub.actions&#x27;;
+import { getMitreData, getMitreDataSuccess } from &#x27;./hub.actions&#x27;;
 
 /**
  * The key for the Hub feature state within the NgRx store.
@@ -279,8 +279,8 @@ const initialState: HubState &#x3D; {
  */
 export const hubReducer &#x3D; createReducer(
   initialState,
-  on(getMitreDataSuccess, (state, { mitreAttackData }) &#x3D;&gt; ({ ...state, data: mitreAttackData })),
-  on(filterMitreDataSuccess, (state, { mitreAttackData, filter }) &#x3D;&gt; ({ ...state, data: mitreAttackData, filter: filter })),
+  on(getMitreData, (state, { filter }) &#x3D;&gt; ({ ...state, data: initialState.data, filter: filter })),
+  on(getMitreDataSuccess, (state, { mitreAttackData, filter }) &#x3D;&gt; ({ ...state, data: mitreAttackData, filter: filter })),
 );
 </code></pre>
     </div>

@@ -89,7 +89,6 @@ export class TooltipDirective {
     this.renderer.addClass(this.tooltipElement, 'custom-tooltip');
     if (this.tooltipElement) {
       this.tooltipElement.innerHTML = this.tooltipText;
-      console.log(this.tooltipText);
     }
     this.renderer.appendChild(document.body, this.tooltipElement);
   }

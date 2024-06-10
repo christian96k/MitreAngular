@@ -1,4 +1,3 @@
-import { MitreAttackInfo } from './../../../shared/model/mitre.model';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../../core/modules/user/service/user.service';
@@ -13,7 +12,6 @@ import { ExtendedMitreAttackInfo } from './models/hub.models';
 import { HubService } from './services/hub.service';
 import { LoaderComponent } from '../../../libraries/components/loader/loader.component';
 import { CardComponent } from '../../../libraries/components/card/card.component';
-import { CardAction, CardConfig, CardIcon } from '../../../libraries/models/card.model';
 import { ClusterComponent } from '../../../libraries/components/cluster/cluster.component';
 import { ClusterConfig } from '../../../libraries/models/cluster.model';
 import { MitreAttackComponent } from '../mitre-attack/mitre-attack.component';
@@ -108,11 +106,6 @@ export class HubComponent {
    */
   public mitreDataInfo$: Observable<ExtendedMitreAttackInfo[] | null> = this.hubFacade.mitreData$;
 
-  /**
-   * Observable that provides the current Mitre Attack data filter based on the hacker type.
-   * @public
-   */
-  public mitreDataFilter$: Observable<HackerType> = this.hubFacade.mitreDataFilter$;
 
   /**
    * Current Mitre Attack data.
@@ -152,16 +145,6 @@ export class HubComponent {
   ).subscribe((data: ExtendedMitreAttackInfo[]) => {
     this.mitreHerarchyData = data;
   });
-
-  /**
-   * Filters the Mitre Data based on the hacker type.
-   * @param hackerType The type of hacker to filter.
-   * @public
-   */
-  public filter(hackerType: HackerType): void {
-    this.hubFacade.getMitreData(hackerType);
-    this.hubFacade.filtreMitreData(this.hubService.filterByActorRecursive(this.mitreHerarchyData, hackerType), hackerType);
-  }
 
   /**
    * Handles the logout interaction.

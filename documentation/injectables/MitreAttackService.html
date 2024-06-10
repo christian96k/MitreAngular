@@ -608,7 +608,7 @@ export class MitreAttackService {
     switch (actionType) {
       case CardAction.INFO:
         modalConfig &#x3D; {
-          title: &#x27;Informazioni&#x27;,
+          title: &#x27;Informazioni tecniche&#x27;,
           content: [
             {
               label: &#x27;Name&#x27;,
@@ -627,7 +627,7 @@ export class MitreAttackService {
               value: mitreAttackInfo.description,
             },
             {
-              label: &#x27;Uses&#x27;,
+              label: &#x27;Uses Example&#x27;,
               value: mitreAttackInfo?.uses ? mitreAttackInfo?.uses[0]?.description : &#x27;N/A&#x27;,
             }
           ],

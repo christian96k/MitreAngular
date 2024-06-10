@@ -144,10 +144,6 @@ Handles side effects related to the Hub feature, such as fetching Mitre data.</p
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#filterMitreData" >filterMitreData</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#getMitreData" >getMitreData</a>
                             </li>
                         </ul>
@@ -245,44 +241,6 @@ Handles side effects related to the Hub feature, such as fetching Mitre data.</p
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="filterMitreData"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>filterMitreData</b></span>
-                        <a href="#filterMitreData"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
-    this.actions$.pipe(
-      ofType(filterMitreData),
-      switchMap(({ mitreAttackData, filter }) &#x3D;&gt; of(filterMitreDataSuccess({ mitreAttackData, filter })))
-    )
-  )</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:45</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Effect triggered when a filterMitreData action is dispatched.
-Dispatches a success action with the filtered Mitre data.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getMitreData"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -296,11 +254,14 @@ Dispatches a success action with the filtered Mitre data.</p>
                         <i>Default value : </i><code>createEffect(() &#x3D;&gt;
     this.actions$.pipe(
       ofType(getMitreData),
-      switchMap(() &#x3D;&gt; {
+      switchMap(({filter}) &#x3D;&gt; {
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) &#x3D;&gt; getMitreDataSuccess({ mitreAttackData: this.hubService.mapMitreData(response) }))
+            map((response) &#x3D;&gt; getMitreDataSuccess({
+              mitreAttackData: filter &#x3D;&#x3D;&#x3D; HackerType.GENERIC ?
+              this.hubService.mapMitreData(response)
+              : this.hubService.filterByActorRecursive(this.hubService.mapMitreData(response), filter), filter: filter }))
           );
       })
     )
@@ -332,9 +293,9 @@ Retrieves Mitre data from the service and dispatches a success action with the r
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;;
 import { Actions, createEffect, ofType } from &quot;@ngrx/effects&quot;;
 import { map, switchMap } from &quot;rxjs/operators&quot;;
-import { of } from &quot;rxjs&quot;;
 import { HubService } from &quot;../services/hub.service&quot;;
-import { filterMitreData, filterMitreDataSuccess, getMitreData, getMitreDataSuccess } from &quot;./hub.actions&quot;;
+import { getMitreData, getMitreDataSuccess } from &quot;./hub.actions&quot;;
+import { HackerType } from &quot;../../../../shared/constants/groupHackers.model&quot;;
 
 /**
  * Effects class for the Hub module.
@@ -358,25 +319,16 @@ export class HubEffects {
   public getMitreData &#x3D; createEffect(() &#x3D;&gt;
     this.actions$.pipe(
       ofType(getMitreData),
-      switchMap(() &#x3D;&gt; {
+      switchMap(({filter}) &#x3D;&gt; {
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) &#x3D;&gt; getMitreDataSuccess({ mitreAttackData: this.hubService.mapMitreData(response) }))
+            map((response) &#x3D;&gt; getMitreDataSuccess({
+              mitreAttackData: filter &#x3D;&#x3D;&#x3D; HackerType.GENERIC ?
+              this.hubService.mapMitreData(response)
+              : this.hubService.filterByActorRecursive(this.hubService.mapMitreData(response), filter), filter: filter }))
           );
       })
-    )
-  );
-
-  /**
-   * Effect triggered when a filterMitreData action is dispatched.
-   * Dispatches a success action with the filtered Mitre data.
-   * @type {Observable&lt;Action&gt;}
-   */
-  public filterMitreData &#x3D; createEffect(() &#x3D;&gt;
-    this.actions$.pipe(
-      ofType(filterMitreData),
-      switchMap(({ mitreAttackData, filter }) &#x3D;&gt; of(filterMitreDataSuccess({ mitreAttackData, filter })))
     )
   );
 

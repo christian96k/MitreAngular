@@ -16,11 +16,3 @@ export const mitreData$ = createSelector(
   ({ data }) => data
 );
 
-/**
- * Selector to retrieve the Mitre data filter from the Hub feature state.
- * @type {MemoizedSelector<object, HackerType>}
- */
-export const mitreDataFilter$ = createSelector(
-  hubFeature,
-  ({ filter }) => filter
-);

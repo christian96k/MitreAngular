@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs/operators";
-import { of } from "rxjs";
 import { HubService } from "../services/hub.service";
-import { filterMitreData, filterMitreDataSuccess, getMitreData, getMitreDataSuccess } from "./hub.actions";
+import { getMitreData, getMitreDataSuccess } from "./hub.actions";
 import { HackerType } from "../../../../shared/constants/groupHackers.model";
 
 /**
@@ -38,18 +37,6 @@ export class HubEffects {
               : this.hubService.filterByActorRecursive(this.hubService.mapMitreData(response), filter), filter: filter }))
           );
       })
-    )
-  );
-
-  /**
-   * Effect triggered when a filterMitreData action is dispatched.
-   * Dispatches a success action with the filtered Mitre data.
-   * @type {Observable<Action>}
-   */
-  public filterMitreData = createEffect(() =>
-    this.actions$.pipe(
-      ofType(filterMitreData),
-      switchMap(({ mitreAttackData, filter }) => of(filterMitreDataSuccess({ mitreAttackData, filter })))
     )
   );
 

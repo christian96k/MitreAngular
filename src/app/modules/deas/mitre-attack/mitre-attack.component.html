@@ -1,90 +1,104 @@
 <section class="mitre-attack border">
 
+  @if(mitreFilters){
+    <section class="mitre-attack__filters d-flex justify-content-end mb-2">
+      <select class="form-select border-0 w-50  caption" (change)="filter($event)" >
+        <option selected value="{{hackerType.APT28}}">{{hackerType.APT28}}</option>
+        <option value="{{hackerType.APT29}}">{{hackerType.APT29}}</option>
+        <option value="{{hackerType.GENERIC}}">{{hackerType.GENERIC}}</option>
+      </select>
+    </section>
+  }
 
-  @if(mitreAttackInfo$ | async; as MitreAttackInfo){
+  @if(mitreAttackInfo$ | async; as dataMitreAttack$){
 
-    @if(attackHacker){
-      <!-- HEADER -->
-      <section class="mitre-attack__header row justify-content-between align-items-center">
+    @if(dataMitreAttack$){
 
-        <div class="col-12 col-md-4 d-flex align-items-center">
-          <h4 class="d-inline-block" >
-            {{attackHacker.title}}
-          </h4>
+      @if(attackHacker){
+        <!-- HEADER -->
+        <section class="mitre-attack__header row justify-content-between align-items-center">
 
-          <p class="d-inline-block ms-4 subtitle fw-300">
-            {{'Indirizzo IP:'}} <b class="fw-500"> {{attackHacker.ipAdresss}} </b>
-          </p>
+          <div class="col-12 col-md-4 d-flex align-items-center">
+            <h4 class="d-inline-block" >
+              {{attackHacker.title}}
+            </h4>
 
-        </div>
+            <p class="d-inline-block ms-4 subtitle fw-300">
+              {{'Indirizzo IP:'}} <b class="fw-500"> {{attackHacker.ipAdresss}} </b>
+            </p>
 
-        <div class="col-12 col-md-4 d-flex justify-content-end">
-          <app-chip [chipConfig]="chipConfig"></app-chip>
-        </div>
-
-      </section>
-
-      <hr class="mitre-attack__separator border-gradient"/>
-
-      <!-- INFO -->
-      <section class="mitre-attack__info">
-        <app-chip-set [chipsetConfig]="attackHacker.aliases"/>
-
-        <div class="mitre-attack__info__description-box py-3">
-          <p class="paragraph fw-500">{{'Descrizione:'}}</p>
-          <div class="mitre-attack__info__description__box__text">
-            <span class="description" [innerHTML]="attackHacker.description"></span>
           </div>
+
+          <div class="col-12 col-md-4 d-flex justify-content-end">
+            <app-chip [chipConfig]="chipConfig"></app-chip>
+          </div>
+
+        </section>
+
+        <hr class="mitre-attack__separator border-gradient"/>
+
+        <!-- INFO -->
+        <section class="mitre-attack__info">
+          <app-chip-set [chipsetConfig]="attackHacker.aliases"/>
+
+          <div class="mitre-attack__info__description-box py-3">
+            <p class="paragraph fw-500">{{'Descrizione:'}}</p>
+            <div class="mitre-attack__info__description__box__text">
+              <span class="description" [innerHTML]="attackHacker.description"></span>
+            </div>
+          </div>
+        </section>
+      }
+
+      <!-- PHASE & TECHNIQUES -->
+      <section class="mitre-attack__footer row justify-content-between">
+
+        <div class="mitre-attack__footer__phase col-12 col-md-6">
+          <p class="paragraph fw-500 py-3 d-inline-block">
+            {{'Fasi di Attaco'}}
+          </p>
+          <span class="caption ps-2">{{'Seleziona una fase per visualizzare le tecniche:'}}</span>
+
+          @if(clusters.length){
+            <div class="mitre-attack__footer__phase__clusters p-3">
+              @for( cluster of clusters; track cluster){
+                <app-cluster [clusterConfig]="cluster"/>
+              }
+            </div>
+          }
         </div>
+
+        <div class="mitre-attack__footer__techniques col-12 col-md-6">
+          <p class="paragraph fw-500 py-3">
+            {{'Tecniche di Attacco'}}
+          </p>
+          @if(cards.length){
+            <div class="mitre-attack__footer__techniques__cards p-3" [ngClass]="{'single': cards.length === 1}">
+              @for (card of cards; track card) {
+                <app-card [cardConfig]="card"/>
+              }
+            </div>
+          }
+          @else {
+            <div class="mitre-attack__footer__techniques__cards p-3 d-block">
+              <span class="caption">
+                {{'Nessuna fase di attacco disponibile'}}
+              </span>
+            </div>
+          }
+
+        </div>
+
+
       </section>
     }
 
-    <!-- PHASE & TECHNIQUES -->
-    <section class="mitre-attack__footer row justify-content-between">
 
-      <div class="mitre-attack__footer__phase col-12 col-md-6">
-        <p class="paragraph fw-500 pb-3 d-inline-block">
-          {{'Fasi di Attaco'}}
-        </p>
-        <span class="caption ps-2">{{'Seleziona una fase per visualizzare le tecniche:'}}</span>
-
-        @if(clusters.length){
-          <div class="mitre-attack__footer__phase__clusters p-3">
-            @for( cluster of clusters; track cluster){
-              <app-cluster [clusterConfig]="cluster"/>
-            }
-          </div>
-        }
-      </div>
-
-      <div class="mitre-attack__footer__techniques col-12 col-md-6">
-        <p class="paragraph fw-500 pb-3">
-          {{'Tecniche di Attacco'}}
-        </p>
-        @if(cards.length){
-          <div class="mitre-attack__footer__techniques__cards p-3" [ngClass]="{'single': cards.length === 1}">
-            @for (card of cards; track card) {
-              <app-card [cardConfig]="card"/>
-            }
-          </div>
-        }
-        @else {
-          <div class="mitre-attack__footer__tecniques__empty h-100 d-flex justify-content-center align-items-center">
-            <span class="caption">
-              {{'Nessuna fase di attacco disponibile'}}
-            </span>
-          </div>
-        }
-
-      </div>
-
-
-    </section>
   }
 
 
   @else {
-    <div class="flex-all-center h-50vh w-100">
+    <div class="flex-all-center h-75vh w-100">
       <app-loader/>
     </div>
   }

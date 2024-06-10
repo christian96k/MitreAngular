@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { HackerType } from '../../../../shared/constants/groupHackers.model';
 import { ExtendedMitreAttackInfo } from '../models/hub.models';
-import { getMitreDataSuccess, filterMitreDataSuccess } from './hub.actions';
+import { getMitreData, getMitreDataSuccess } from './hub.actions';
 
 /**
  * The key for the Hub feature state within the NgRx store.
@@ -36,6 +36,6 @@ const initialState: HubState = {
  */
 export const hubReducer = createReducer(
   initialState,
+  on(getMitreData, (state, { filter }) => ({ ...state, data: initialState.data, filter: filter })),
   on(getMitreDataSuccess, (state, { mitreAttackData, filter }) => ({ ...state, data: mitreAttackData, filter: filter })),
-  on(filterMitreDataSuccess, (state, { mitreAttackData, filter }) => ({ ...state, data: mitreAttackData, filter: filter })),
 );

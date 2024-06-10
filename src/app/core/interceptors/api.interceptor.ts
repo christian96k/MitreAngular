@@ -19,7 +19,6 @@ export const apiInterceptor: HttpInterceptorFn = (
   const userFacade = inject(UserFacade);
   const authService = inject(AuthService);
 
-  console.log('interceptor');
   return authService.getAccessTokenSilently().pipe(
     switchMap((token) => {
       if (!token) {
@@ -59,6 +58,5 @@ function modifyReq(
  * @returns {string} The modified URL.
  */
 function modifyUrl(url: string): string {
-  console.log('url', url);
   return `${url}`;
 }

@@ -146,10 +146,6 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
                                     <span class="modifier">Public</span>
                                 <a href="#mitreData$" >mitreData$</a>
                             </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#mitreDataFilter$" >mitreDataFilter$</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -162,10 +158,6 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#filtreMitreData" >filtreMitreData</a>
-                            </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#getMitreData" >getMitreData</a>
@@ -193,7 +185,7 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -247,98 +239,6 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="filtreMitreData"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>filtreMitreData</b></span>
-                        <a href="#filtreMitreData"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>filtreMitreData(mitreAttackData: <a href="../undefineds/ExtendedMitreAttackInfo.html" target="_self">ExtendedMitreAttackInfo[]</a>, filter: <a href="../undefineds/HackerType.html" target="_self">HackerType</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:46</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Dispatches an action to filter Mitre data.</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>mitreAttackData</td>
-                                            <td>
-                                                            <code><a href="../miscellaneous/typealiases.html#ExtendedMitreAttackInfo" target="_self" >ExtendedMitreAttackInfo[]</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>The Mitre attack data to be filtered.</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>filter</td>
-                                            <td>
-                                                            <code><a href="../miscellaneous/enumerations.html#HackerType" target="_self" >HackerType</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>The type of hacker to filter the Mitre data by.</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getMitreData"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -350,15 +250,15 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getMitreData()</code>
+                    <code>getMitreData(filter: <a href="../undefineds/HackerType.html" target="_self">HackerType</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -368,10 +268,40 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
                         <div class="io-description"><p>Dispatches an action to fetch Mitre data.</p>
 </div>
 
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#HackerType" target="_self" >HackerType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -401,45 +331,13 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:19</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Observable stream of Mitre data from the store.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mitreDataFilter$"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>mitreDataFilter$</b></span>
-                        <a href="#mitreDataFilter$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>this.store.select(mitreDataFilter$)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/deas/hub/store/hub.facade.ts:26</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Observable stream of Mitre data filter from the store.</p>
 </div>
                 </td>
             </tr>
@@ -455,9 +353,8 @@ Provides a simplified interface for interacting with the Hub feature store.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Store } from &#x27;@ngrx/store&#x27;;
 import { HackerType } from &#x27;../../../../shared/constants/groupHackers.model&#x27;;
-import { ExtendedMitreAttackInfo } from &#x27;../models/hub.models&#x27;;
-import { getMitreData, filterMitreData } from &#x27;./hub.actions&#x27;;
-import { mitreData$, mitreDataFilter$ } from &#x27;./hub.selectors&#x27;;
+import { getMitreData } from &#x27;./hub.actions&#x27;;
+import { mitreData$,  } from &#x27;./hub.selectors&#x27;;
 
 /**
  * Facade service for the Hub module.
@@ -474,12 +371,6 @@ export class HubFacade {
   public mitreData$ &#x3D; this.store.select(mitreData$);
 
   /**
-   * Observable stream of Mitre data filter from the store.
-   * @type {Observable&lt;HackerType&gt;}
-   */
-  public mitreDataFilter$ &#x3D; this.store.select(mitreDataFilter$);
-
-  /**
    * Initializes the HubFacade instance.
    * @param {Store} store The NgRx store instance.
    */
@@ -488,17 +379,8 @@ export class HubFacade {
   /**
    * Dispatches an action to fetch Mitre data.
    */
-  public getMitreData(): void {
-    this.store.dispatch(getMitreData());
-  }
-
-  /**
-   * Dispatches an action to filter Mitre data.
-   * @param {ExtendedMitreAttackInfo[]} mitreAttackData The Mitre attack data to be filtered.
-   * @param {HackerType} filter The type of hacker to filter the Mitre data by.
-   */
-  public filtreMitreData(mitreAttackData: ExtendedMitreAttackInfo[], filter: HackerType): void {
-    this.store.dispatch(filterMitreData({ mitreAttackData, filter }));
+  public getMitreData(filter:HackerType): void {
+    this.store.dispatch(getMitreData({filter}));
   }
 }
 </code></pre>

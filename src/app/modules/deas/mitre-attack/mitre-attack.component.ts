@@ -81,7 +81,7 @@ export class MitreAttackComponent {
    * Current hacker data being used for attacks.
    * @public
    */
-  public attackHacker = HackersMock.GENERIC;
+  public attackHacker = HackersMock.APT28;
 
   /**
    * Configurations for clusters.
@@ -108,8 +108,22 @@ export class MitreAttackComponent {
   public chipConfig = {
     label: 'Identified as malicious actor',
     isDark: true,
-    icon: 'virus',
+    icon: 'icon-virus',
   };
+
+  /**
+   * hackerType configuration for filter.
+   * @public
+   */
+  public hackerType = HackerType;
+
+  // DEMO: filters
+  /**
+   * mitreFilters configuration optional.
+   * @public
+   */
+  public mitreFilters: boolean = true;
+
 
   /**
    * Subscription to the Mitre Data.
@@ -120,30 +134,22 @@ export class MitreAttackComponent {
     .pipe(filter(Boolean), takeUntil(this.destroy$))
     .subscribe((data: ExtendedMitreAttackInfo[]) => {
       this.mitreDataFiltered = data;
+      this.cards = [];
       this.clusters = this.mitreDataFiltered.map(
-        (mitreAttackInfo: ExtendedMitreAttackInfo) =>
-          this.mitreAttackService.createMitreCluster(mitreAttackInfo, this)
+        (mitreAttackInfo: ExtendedMitreAttackInfo) => this.mitreAttackService.createMitreCluster(mitreAttackInfo, this)
       );
     });
 
-  /**
-   * Subscription to the Mitre Data Filter.
-   * Updates the attack hacker based on the received filter.
-   * @public
-   */
-  public filteDataSubscription: Subscription = this.hubFacade.mitreDataFilter$
-    .pipe(filter(Boolean), takeUntil(this.destroy$))
-    .subscribe((filter: HackerType) => {
-      this.attackHacker = HackersMock[filter];
-    });
 
   /**
    * Filters the Mitre Data based on the hacker type.
-   * @param hackerType The type of hacker to filter.
+   * @param event The type of select event filter.
    * @public
    */
-  filter(hackerType: HackerType): void {
-    this.hubFacade.filtreMitreData(this.mitreDataFiltered, hackerType);
+  public filter(event: Event): void {
+    const hackerType = (event.target as HTMLSelectElement).value as HackerType;
+    this.attackHacker = {...HackersMock[hackerType]};
+    this.hubFacade.getMitreData(hackerType);
   }
 
   /**
@@ -178,4 +184,11 @@ export class MitreAttackComponent {
           )
         : [];
   }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+  }
+
+
+
 }

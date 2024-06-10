@@ -23,6 +23,13 @@ $chip-border-radius: 12px;
     @include chip-background-dark;
     color: $pure-white;
   }
+  >i.icon-virus{
+    background: linear-gradient(45deg, #EE6C53 0%, #BE5B51 50%, #72414D 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 
