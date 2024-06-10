@@ -24,7 +24,7 @@ export interface HubState {
  */
 const initialState: HubState = {
   data: null,
-  filter: HackerType.APT28 // Default hacker type filter
+  filter: HackerType.GENERIC // Default hacker type filter
 };
 
 /**
