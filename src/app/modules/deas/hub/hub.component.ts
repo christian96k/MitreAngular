@@ -15,9 +15,9 @@ import { HubService } from './services/hub.service';
 import { LoaderComponent } from '../../../libraries/components/loader/loader.component';
 import { CardComponent } from '../../../libraries/components/card/card.component';
 import { CardAction, CardConfig, CardIcon } from '../../../libraries/models/card.model';
-import { MitreAttackComponent } from '../../../libraries/components/mitre-attack/mitre-attack.component';
 import { ClusterComponent } from '../../../libraries/components/cluster/cluster.component';
 import { ClusterConfig } from '../../../libraries/models/cluster.model';
+import { MitreAttackComponent } from '../mitre-attack/mitre-attack.component';
 
 
 

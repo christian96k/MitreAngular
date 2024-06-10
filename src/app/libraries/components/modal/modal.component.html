@@ -1,0 +1,38 @@
+
+
+<ng-container *ngIf="modalConfig">
+  <div class="mitre-modal">
+    <p class="mb-2 subtitle"> {{modalConfig.title}}</p>
+
+    <hr class="border-gradient">
+
+    @if(modalConfig.content.length){
+      <div class="mitre-modal__content">
+        @for(content of modalConfig.content; track content){
+          @if(content.label && content.value){
+            <div class="mitre-modal__content__row">
+              <p class="mb-2 paragraph fw-500">{{content.label}}</p>
+              <p class="mb-2 mitre-modal__content__row__value paragraph">{{content.value}}</p>
+            </div>
+          }
+        }
+
+      </div>
+
+      @if(modalConfig.cards.length){
+        <p class="mb-2 paragraph fw-500">{{'Sotto tecniche:'}}</p>
+          <div class="mitre-modal__cards" [ngClass]="{'single': modalConfig.cards.length === 1}">
+            @for(card of modalConfig.cards; track card){
+              <app-card [cardConfig]="card"/>
+            }
+          </div>
+      }@else {
+        <div class="mitre-modal__empty">
+          <p class="mb-2 paragraph fw-500">{{'Non ci sono sotto tecniche'}}</p>
+        </div>
+      }
+    }
+  </div>
+
+</ng-container>
+

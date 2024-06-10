@@ -1,0 +1,46 @@
+@import "variables";
+
+$modal-background-gradient: linear-gradient(261deg, #3A3A41 -6.16%, #2E2D35 103.1%);
+
+@mixin mitre-modal-cards-box(){
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 0.23fr));
+  grid-gap: 1rem;
+  &.single{
+    grid-template-columns: repeat(auto-fit, minmax(6.5rem, 0.21fr));
+  }
+}
+
+@mixin mitre-modal-value(){
+  background-color: $pure-black;
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
+  max-height: 15vh;
+}
+
+
+@mixin modal-background {
+  background:$modal-background-gradient;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.mitre-modal{
+  @include modal-background();
+
+
+  &__content{
+    &__row{
+      margin: 12px 0 12px 0;
+      &__value{
+        @include mitre-modal-value();
+      }
+    }
+  }
+
+  &__cards{
+    @include mitre-modal-cards-box();
+  }
+
+}

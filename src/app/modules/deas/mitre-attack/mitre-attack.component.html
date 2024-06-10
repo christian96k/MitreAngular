@@ -6,7 +6,7 @@
     @if(attackHacker){
       <!-- HEADER -->
       <section class="mitre-attack__header row justify-content-between align-items-center">
-        <!-- TODO: COMPONENT -->
+
         <div class="col-12 col-md-4 d-flex align-items-center">
           <h4 class="d-inline-block" >
             {{attackHacker.title}}
@@ -43,9 +43,11 @@
     <section class="mitre-attack__footer row justify-content-between">
 
       <div class="mitre-attack__footer__phase col-12 col-md-6">
-        <p class="paragraph fw-500 pb-3">
+        <p class="paragraph fw-500 pb-3 d-inline-block">
           {{'Fasi di Attaco'}}
         </p>
+        <span class="caption ps-2">{{'Seleziona una fase per visualizzare le tecniche:'}}</span>
+
         @if(clusters.length){
           <div class="mitre-attack__footer__phase__clusters p-3">
             @for( cluster of clusters; track cluster){
@@ -69,14 +71,13 @@
         @else {
           <div class="mitre-attack__footer__tecniques__empty h-100 d-flex justify-content-center align-items-center">
             <span class="caption">
-              {{'No available techniques'}}
+              {{'Nessuna fase di attacco disponibile'}}
             </span>
           </div>
         }
 
       </div>
 
-      <!-- MODAL -->
 
     </section>
   }
@@ -89,3 +90,4 @@
   }
 
 </section>
+

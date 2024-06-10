@@ -1,9 +1,15 @@
-export const HACKERS = {
+export type HackerType = {
+  APT28: string;
+  APT29: string;
+  RANDOM: string;
+};
+
+
+export const HACKERS: HackerType = {
   APT28: 'APT28',
   APT29: 'APT29',
   RANDOM: 'RANDOM',
 }
-
 
 
 // mock data

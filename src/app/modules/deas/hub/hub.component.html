@@ -1,11 +1,8 @@
 
 
-<main class="hub container-fluid p-3">
+<main class="hub container-fluid">
 
-  <h1> HUB PAGE</h1>
-
-
-  <div class="hub__content container">
+  <div class="hub__content container-lg px-lg-4">
     <app-mitre-attack/>
   </div>
 
@@ -13,59 +10,10 @@
     <button class="" (click)="onLogout()">
       Log out
     </button>
+
   </section>
 
 
-
-  <!-- @if(mitreDataInfo$ | async; as MitreData){
-    <section class="hub__card-grid d-grid columns">
-
-      @if(mitreHerarchyData.length){
-
-        @for( tactic of mitreHerarchyData; track tactic){
-          <div class="card p-3">
-            <h4>
-              {{ tactic.name }}
-            </h4>
-            <small class="fw-bold pb-2" > {{ tactic.id }}</small>
-
-            <div class="card__list">
-              <p> {{'Techniques:'}}</p>
-              <ul>
-                @for( technique of tactic.techniques; track technique){
-                  <li [tooltipShow]="true" tooltip [tooltipText]="technique.name + '-' + technique.external_references[0].external_id">
-                    <span>{{ technique.name }}</span>
-                  </li>
-                    @if(technique.subtechniques?.length){
-                      <p> {{'Subtechniques:'  }} </p>
-                      <ul>
-                        @for( subtechnique of technique.subtechniques; track subtechnique){
-                          <li>
-                            <span [tooltipShow]="true" tooltip [tooltipText]="subtechnique.name + '-' + subtechnique.external_references[0].external_id">{{ subtechnique.name }}</span>
-                          </li>
-                        }
-                      </ul>
-                    }
-                  }
-              </ul>
-            </div>
-
-          </div>
-        }
-      }
-
-    </section>
-  }@else {
-    <div class="flex-all-center  w-100 h-100vh">
-      <app-loader/>
-    </div>
-  } -->
-
-
 </main>
-
-
-
-
 
 
