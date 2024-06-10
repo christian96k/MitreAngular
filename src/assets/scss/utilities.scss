@@ -30,6 +30,11 @@
   @include generate-style("border-color", secondary);
 }
 
+.border-gradient{
+  border: 1.411px solid transparent;
+  border-image: linear-gradient(to right, rgba(255, 255, 255, 0), $secondary, rgba(255, 255, 255, 0)) 1;
+}
+
 
 .background-gray {
   @include generate-style("background-color", gray);

@@ -50,20 +50,7 @@
   }
 
 
-  .cluster-container{
-    display: grid;
-    border: 1px solid green;
-     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-     grid-gap: 1.0rem;
 
-    @include custom-media-breakpoint-up(2xl) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @include custom-media-breakpoint-up(3xl) {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  }
 
 
 

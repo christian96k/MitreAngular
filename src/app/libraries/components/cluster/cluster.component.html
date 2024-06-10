@@ -1,14 +1,13 @@
 @if(clusterConfig()){
   <!-- [tooltipText]="clusterConfig().name +' - '+clusterConfig().externalID" [tooltipShow]="true"  -->
-  <div tooltip class="cluster d-flex justify-content-center align-items-center cursor-pointer {{clusterConfig().active ? 'active': ''}}"
+  <div tooltip class="cluster d-flex justify-content-center align-items-center cursor-pointer {{clusterConfig().active ? 'active': ''}} {{clusterConfig().opaque ? 'opaque': ''}}"
     [ngStyle]="{
-      'width.rem': (clusterConfig().active ? clusterConfig().size + 1 : clusterConfig().size),
-      'height.rem': (clusterConfig().active ? clusterConfig().size + 1 : clusterConfig().size)
+      'width.rem': (clusterConfig().active ? clusterConfig().size: clusterConfig().size),
+      'height.rem': (clusterConfig().active ? clusterConfig().size: clusterConfig().size)
     }"
-    (click)="clusterConfig().select(clusterConfig())">
+    (click)="clusterConfig().select(clusterConfig()); $event.stopImmediatePropagation()">
     <span class="caption text-center p-1">
       {{clusterConfig().name}}
-      {{clusterConfig().active}}
     </span>
   </div>
 }

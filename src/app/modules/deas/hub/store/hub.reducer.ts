@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { MitreAttackData } from "../../../../shared/model/mitre.model";
 import { getMitreDataSuccess } from "./hub.actions";
+import { ExtendedMitreAttackInfo } from "../models/hub.models";
 
 /**
  * Key representing the feature module for the hub list.
@@ -11,7 +12,7 @@ export const HubListFeatureKey = 'hub';
 
 
 export interface HubState {
-  data: MitreAttackData | null;
+  data: ExtendedMitreAttackInfo[] | null;
 }
 
 const initialState: HubState = {

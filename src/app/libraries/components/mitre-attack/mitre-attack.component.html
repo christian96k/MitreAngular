@@ -1,61 +1,91 @@
 <section class="mitre-attack border">
 
-  <!-- HEADER -->
-  <div class="mitre-attack__header row justify-content-between align-items-center">
 
-    <!-- TODO: COMPONENT -->
-    <div class="col-12 col-md-4 d-flex align-items-center">
-      <h4 class="d-inline-block" >
-        {{'Mitre Attack'}}
-      </h4>
+  @if(mitreAttackInfo$ | async; as MitreAttackInfo){
 
-      <p class="d-inline-block ms-4 subtitle fw-300">
-        {{'Indirizzo IP:'}} <b class="fw-500">{{'139.5.177.205'}}</b>
-      </p>
+    @if(attackHacker){
+      <!-- HEADER -->
+      <section class="mitre-attack__header row justify-content-between align-items-center">
+        <!-- TODO: COMPONENT -->
+        <div class="col-12 col-md-4 d-flex align-items-center">
+          <h4 class="d-inline-block" >
+            {{attackHacker.title}}
+          </h4>
 
-    </div>
+          <p class="d-inline-block ms-4 subtitle fw-300">
+            {{'Indirizzo IP:'}} <b class="fw-500"> {{attackHacker.ipAdresss}} </b>
+          </p>
 
-    <div class="col-12 col-md-4 d-flex justify-content-end">
-      <app-chip [chipConfig]="chipConfig"></app-chip>
-    </div>
+        </div>
 
-  </div>
+        <div class="col-12 col-md-4 d-flex justify-content-end">
+          <app-chip [chipConfig]="chipConfig"></app-chip>
+        </div>
 
-  <hr class="mitre-attack__separator"/>
+      </section>
 
+      <hr class="mitre-attack__separator border-gradient"/>
 
-  <!-- INFO -->
-  <div class="mitre-attack__info">
+      <!-- INFO -->
+      <section class="mitre-attack__info">
+        <app-chip-set [chipsetConfig]="attackHacker.aliases"/>
 
-   <app-table [tableConfig]="tableConfig"></app-table>
-    <!-- TODO: DESCRIPTION WITH LINK -->
-   <div class="mitre-attack__info__description-box py-3">
-      <p class="paragraph fw-500">{{'Descrizione:'}}</p>
+        <div class="mitre-attack__info__description-box py-3">
+          <p class="paragraph fw-500">{{'Descrizione:'}}</p>
+          <div class="mitre-attack__info__description__box__text">
+            <span class="description" [innerHTML]="attackHacker.description"></span>
+          </div>
+        </div>
+      </section>
+    }
 
-      <div class="mitre-attack__info__description__box__text">
-        <span class="description">
-          {{"APT28 is a threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) 85th Main Special Service Center (GTsSS) military unit 26165.(Citation: NSA/FBI Drovorub August 2020)(Citation: Cybersecurity Advisory GRU Brute Force Campaign July 2021) This group has been active since at least 2004.(Citation: DOJ GRU Indictment Jul 2018)(Citation: Ars Technica GRU indictment Jul 2018)(Citation: Crowdstrike DNC June 2016)(Citation: FireEye APT28)(Citation: SecureWorks TG-4127)(Citation: FireEye APT28 January 2017)(Citation: GRIZZLY STEPPE JAR)(Citation: Sofacy DealersChoice)(Citation: Palo Alto Sofacy 06-2018)(Citation: Symantec APT28 Oct 2018)(Citation: ESET Zebrocy May 2019) APT28 reportedly compromised the Hillary Clinton campaign, the Democratic National Committee, and the Democratic Congressional Campaign Committee in 2016 in an attempt to interfere with the U.S. presidential election. (Citation: Crowdstrike DNC June 2016) In 2018, the US indicted five GRU Unit 26165 officers associated with APT28 for cyber operations (including close-access operations) conducted between 2014 and 2018 against the World Anti-Doping Agency (WADA), the US Anti-Doping Agency, a US nuclear facility, the Organization for the Prohibition of Chemical Weapons (OPCW), the Spiez Swiss Chemicals Laboratory, and other organizations.(Citation: US District Court Indictment GRU Oct 2018) Some of these were conducted with the assistance of GRU Unit 74455, which is also referred to as Sandworm Team."}}
-        </span>
+    <!-- PHASE & TECHNIQUES -->
+    <section class="mitre-attack__footer row justify-content-between">
+
+      <div class="mitre-attack__footer__phase col-12 col-md-6">
+        <p class="paragraph fw-500 pb-3">
+          {{'Fasi di Attaco'}}
+        </p>
+        @if(clusters.length){
+          <div class="mitre-attack__footer__phase__clusters p-3">
+            @for( cluster of clusters; track cluster){
+              <app-cluster [clusterConfig]="cluster"/>
+            }
+          </div>
+        }
       </div>
+
+      <div class="mitre-attack__footer__techniques col-12 col-md-6">
+        <p class="paragraph fw-500 pb-3">
+          {{'Tecniche di Attacco'}}
+        </p>
+        @if(cards.length){
+          <div class="mitre-attack__footer__techniques__cards p-3" [ngClass]="{'single': cards.length === 1}">
+            @for (card of cards; track card) {
+              <app-card [cardConfig]="card"/>
+            }
+          </div>
+        }
+        @else {
+          <div class="mitre-attack__footer__tecniques__empty h-100 d-flex justify-content-center align-items-center">
+            <span class="caption">
+              {{'No available techniques'}}
+            </span>
+          </div>
+        }
+
+      </div>
+
+      <!-- MODAL -->
+
+    </section>
+  }
+
+
+  @else {
+    <div class="flex-all-center h-100vh w-100">
+      <app-loader/>
     </div>
+  }
 
-  </div>
-
-
-  <!-- PHASE & TECHNIQUES -->
-  <div class="mitre-attack__footer d-flex justify-content-between">
-
-    <div class="mitre-attack__footer__phase">
-      <span class="paragraph fw-500">
-        {{'Fasi di Attaco'}}
-      </span>
-    </div>
-
-    <div class="mitre-attack__footer__tecnhiques">
-      <span class="paragraph fw-500">
-        {{'Tecniche di Attaco'}}
-      </span>
-    </div>
-
-  </div>
 </section>

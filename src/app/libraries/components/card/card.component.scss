@@ -3,38 +3,53 @@
 
 
 $card-border: 1px solid rgba(215, 215, 215, 0.70);
-$card-padding: 12px;
+$card-spacing: 12px;
 $card-border-radius: 8px;
 $card-background-gradient: linear-gradient(261deg, #3A3A41 -6.16%, #2E2D35 103.1%);
 $card-backdrop-filter: blur(25px);
 
-@mixin card-polygon-background {
-  background:
-    url("../../../../assets/images/card/polygon.svg") right center no-repeat,
-    $card-background-gradient
+@mixin card-background {
+  background:$card-background-gradient;
+}
+
+@mixin card-polygon-overlay {
+  background: url("../../../../assets/images/card/polygon.svg") right center no-repeat;
+  pointer-events: none;
 }
 
 
 
 .card {
-  padding: $card-padding;
+  padding: $card-spacing;
   border-radius: $card-border-radius;
   border: $card-border;
   backdrop-filter: $card-backdrop-filter;
   color:$pure-white;
+  border-bottom: 1px solid transparent;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $secondary, rgba(255, 255, 255, 0));
+  @include card-background();
 
-  @include card-polygon-background();
+  background-color: black;
 
   &__header{
-    margin-bottom: 12px;
+    margin-bottom: $card-spacing;
+    &__bottom{
+      margin-top: $card-spacing;
+    }
   }
 
   &__footer{
-    border-top: 1px solid red;
     backdrop-filter: blur(25px);
     border-bottom-left-radius: $card-border-radius;
     border-bottom-right-radius: $card-border-radius;
+    background: linear-gradient(261deg, rgba(32, 32, 37, 0.50) -6.16%, rgba(24, 23, 30, 0.50) 103.1%);
 
   }
 
+  &__overlay-polygon{
+    @include card-polygon-overlay();
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    position: absolute;
+  }
 }

@@ -23,7 +23,7 @@ export class HubEffects {
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) => getMitreDataSuccess({mitreAttackData: response}))
+            map((response) => getMitreDataSuccess({mitreAttackData: this.hubService.mapMitreData(response)}))
           );
       })
     )

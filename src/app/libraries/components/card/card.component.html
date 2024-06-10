@@ -1,16 +1,16 @@
 @if(cardConfig()){
-  <div class="card caption p-0">
+  <div class="card caption p-0 h-100 justify-content-between">
 
     <!-- HEADER -->
     @if(cardConfig().header){
 
       <div class="card__header {{cardConfig().header.class}} p-3">
-        <div class="fw-500">
+        <div tooltip [tooltipText]="cardConfig().header.label" class="fw-500 text-truncate">
           <span >
             {{cardConfig().header.label}}
           </span>
         </div>
-        <div class="card__body fw-300">
+        <div class="card__header__bottom text-truncate fw-300">
           <span>
             {{cardConfig().header.value}}
           </span>
@@ -20,13 +20,14 @@
 
     <!-- FOOTER -->
     @if(cardConfig().footer){
-      <div class="card__footer w-100 d-flex justify-content-between py-2 px-4">
+      <div class="card__footer w-100 d-flex justify-content-between border-gradient py-2 px-4">
         @for(cta of cardConfig().footer; track cta ){
           <i class="cursor-pointer fa fa-regular {{cta.icon}}" (click)="cta.action(cta.actionType)"></i>
         }
       </div>
     }
 
+    <div class="card__overlay-polygon"></div>
   </div>
 
 

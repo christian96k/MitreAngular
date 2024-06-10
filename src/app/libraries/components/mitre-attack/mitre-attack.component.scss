@@ -1,4 +1,6 @@
 @import "variables";
+@import "custom-bootstrap";
+
 
 
 @mixin mitre-box(){
@@ -18,25 +20,35 @@
   letter-spacing: 0.196px!important;
 }
 
-@mixin mitre-separator(){
-  border: 1.411px solid transparent;
-  border-image: linear-gradient(to right, rgba(255, 255, 255, 0), #555EA0, rgba(255, 255, 255, 0)) 1;
-}
 
-@mixin mitre-phase(){
+@mixin mitre-phase-techniques-box(){
   border-radius: 24px;
   border: 1px solid  rgba(85, 94, 160, 0.10);
   background: linear-gradient(0deg, rgba(25, 26, 29, 0.20) 0%, rgba(25, 26, 29, 0.20) 100%), linear-gradient(188deg, rgba(53, 53, 58, 0.27) -8.13%, rgba(103, 104, 115, 0.21) 112.6%);
   backdrop-filter: blur(10px);
+
+}
+
+@mixin mitre-clusters-box(){
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  grid-gap: 1.0rem;
+  padding: 10px;
+
+}
+
+@mixin mitre-cards-box(){
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 0.23fr));
+  grid-gap: 1rem;
+  &.single{
+    grid-template-columns: repeat(auto-fit, minmax(6.5rem, 0.21fr));
+  }
 }
 
 .mitre-attack{
 
   @include mitre-box();
-
-  &__separator{
-   @include mitre-separator();
-  }
 
   &__info{
     &__description__box{
@@ -48,7 +60,19 @@
 
   &__footer{
     &__phase{
-    @include mitre-phase();
+
+      &__clusters{
+        @include mitre-phase-techniques-box();
+        @include mitre-clusters-box();
+      }
+    }
+
+    &__techniques{
+      &__cards{
+        @include mitre-phase-techniques-box();
+        @include mitre-cards-box();
+      }
+
     }
   }
 

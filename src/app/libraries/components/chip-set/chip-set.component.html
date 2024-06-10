@@ -1,10 +1,10 @@
-@if(tableConfig()){
+@if(chipsetConfig()){
 
   <div class="table-mitre">
 
-    @if(tableConfig().header){
+    @if(chipsetConfig().header){
       <div class="table-mitre__header pb-3 row">
-        @for(header of tableConfig().header; track header){
+        @for(header of chipsetConfig().header; track header){
           <div class="{{header.size}}  text-start font-weight-bold">
             <span class="paragraph">
               {{header.label}}
@@ -14,11 +14,11 @@
       </div>
     }
 
-    @if(tableConfig().content){
+    @if(chipsetConfig().content){
 
 
       <div class="table-mitre__content row">
-        @for(row of tableConfig().content; track row){
+        @for(row of chipsetConfig().content; track row){
           <div class="{{row.size}} ps-0 {{row.class}}">
             @for(chip of row.chips; track chip){
               <app-chip [chipConfig]="chip"></app-chip>

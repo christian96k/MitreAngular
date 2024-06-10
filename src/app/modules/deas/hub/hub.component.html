@@ -4,41 +4,17 @@
 
   <h1> HUB PAGE</h1>
 
-  <!-- <div class="testing" style="width: 150px;">
-    <app-card [cardConfig]="cardConfig"/>
 
-  </div> -->
-
-  <app-mitre-attack/>
-
-
+  <div class="hub__content container">
+    <app-mitre-attack/>
+  </div>
 
   <section class="hub__components">
-
     <button class="" (click)="onLogout()">
       Log out
     </button>
   </section>
 
-  <div class="col-6 background-primary p-4 border-radius">
-
-
-    @if(mitreDataInfo$ | async; as MitreData){
-      @if(clusters.length){
-        @if(clusters.length){
-          <div class="cluster-container border">
-            @for( cluster of clusters; track cluster){
-              <app-cluster [clusterConfig]="cluster"/>
-            }
-          </div>
-        }
-      }
-    }@else {
-      <div class="flex-all-center  w-100 h-100vh">
-        <app-loader/>
-      </div>
-    }
-  </div>
 
 
   <!-- @if(mitreDataInfo$ | async; as MitreData){

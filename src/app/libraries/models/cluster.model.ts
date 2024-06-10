@@ -2,6 +2,7 @@ import { ExtendedMitreAttackInfo } from "../../modules/deas/hub/models/hub.model
 
 export interface ClusterConfig{
   active: boolean;
+  opaque: boolean;
   name:string;
   size:number;
   select: (mitreInfo:ClusterConfig)=> void;

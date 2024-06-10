@@ -18,7 +18,7 @@ export interface CardFooter {
 
 export enum CardAction  {
   INFO ='info',
-  SETTINGS ='info',
+  SETTINGS ='settings',
 }
 
 export enum CardIcon  {

@@ -1,17 +1,17 @@
 import { ChipConfig } from "./chip.model";
 
-export interface TableConfig {
-  header: TableHeader[];
-  content: TableContent[];
+export interface ChipsetConfig {
+  header: ChipsetHeader[];
+  content: ChipsetContent[];
 }
 
-export interface TableHeader {
+export interface ChipsetHeader {
   class?:string;
   size: string;
   label: string;
 }
 
-export interface TableContent {
+export interface ChipsetContent {
   class?:string;
   size: string;
   chips: ChipConfig[];

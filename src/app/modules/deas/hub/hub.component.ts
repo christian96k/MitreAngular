@@ -63,13 +63,10 @@ export class HubComponent {
   // obeservers
   private destroy$ = new Subject<void>();
   public userInfo$: Observable<UserModel> = this.userFacade.user$;
-  public mitreDataInfo$: Observable<MitreAttackData | null> = this.hubFacade.mitreData$;
+  public mitreDataInfo$: Observable<ExtendedMitreAttackInfo[] | null> = this.hubFacade.mitreData$;
 
   // data set
   public mitreData: MitreAttackData|null = null;
-  public mitreTactics:MitreAttackInfo[] = [];
-  public mitreTechniques:MitreAttackInfo[] = [];
-  public mitreSubTechniques:MitreAttackInfo[] = [];
   public mitreHerarchyData: ExtendedMitreAttackInfo[] = [];
   public mitreHerarchyDataAPT28: ExtendedMitreAttackInfo[] = [];
 
@@ -87,14 +84,9 @@ export class HubComponent {
   public mitraDataSubscription: Subscription = this.hubFacade.mitreData$.pipe(
     filter(Boolean),
     takeUntil(this.destroy$)
-  ).subscribe((data: MitreAttackData) => {
-
-    this.mitreHerarchyData = this.hubService.mapMitreData(data);
+  ).subscribe((data: ExtendedMitreAttackInfo[]) => {
+    // this.mitreHerarchyData = this.hubService.filterByActorRecursive(data, HACKERS.APT28);;
     // this.mitreHerarchyDataAPT28 = this.hubService.filterByActorRecursive(this.mitreHerarchyData, HACKERS.APT28);
-
-
-    this.clusters = this.mitreHerarchyData.map((mitreAttackInfo: ExtendedMitreAttackInfo) => this.createCluster(mitreAttackInfo));
-
     console.log("tacticsWithTechniquesAndSubtechniquesAndUses", this.mitreHerarchyData);
     console.log("tacticsWithTechniquesAndSubtechniquesAndUsesFiltered", this.mitreHerarchyDataAPT28);
   });
@@ -132,22 +124,6 @@ export class HubComponent {
     ]
   }
 
-  private createCluster(mitreAttackInfo:ExtendedMitreAttackInfo):ClusterConfig{
 
-    return{
-      name: mitreAttackInfo.name,
-      id: mitreAttackInfo.id,
-      active: false,
-      select: (mitreInfo:ClusterConfig) => this.onCluserSelect(mitreInfo),
-      techniques: mitreAttackInfo.techniques,
-      uses: mitreAttackInfo.uses,
-      externalID: mitreAttackInfo.external_references[0].external_id,
-      size: 7
-    }
-  }
-
-  private onCluserSelect(cluster: ClusterConfig): void {
-    this.clusters = this.clusters.map((_cluster) => _cluster.id === cluster.id ? { ..._cluster, active: !_cluster.active } : _cluster);
-  }
 
 }
