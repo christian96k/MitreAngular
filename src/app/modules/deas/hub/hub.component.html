@@ -1,21 +1,57 @@
 
 
-<main class="hub container-fluid">
+<!-- DEMO: -->
+<!-- showcase initialiazed strcutured data full raw -->
+<main class="hub p-5">
 
+  @if(mitreDataInfo$ | async; as MitreData){
+    <section class="hub__logout pb-3">
+      <button class="" (click)="onLogout()">
+        {{'Log out'}}
+      </button>
+    </section>
+    <section class="hub__card-grid d-grid columns">
 
-  <section class="hub__logout">
-    <button class="" (click)="onLogout()">
-      {{'Log out'}}
-    </button>
-  </section>
+      @if(mitreHerarchyData.length){
 
+        @for( tactic of mitreHerarchyData; track tactic){
+          <div class="card p-3">
+            <h6>
+              {{ tactic.name }}
+            </h6>
+            <small class="fw-bold pb-2" > {{ tactic.id }}</small>
 
-  <div class="hub__content container-lg px-lg-4">
-    <app-mitre-attack/>
-  </div>
+            <div class="card__list">
+              <p class="paragraph"> {{'Techniques:'}}</p>
+              <ul>
+                @for( technique of tactic.techniques; track technique){
+                  <li [tooltipShow]="true" tooltip [tooltipText]="technique.name + '-' + technique.external_references[0].external_id">
+                    <span class="caption">{{ technique.name }}</span>
+                  </li>
+                    @if(technique.subtechniques?.length){
+                      <p class="paragraph"> {{'Subtechniques:'  }} </p>
+                      <ul>
+                        @for( subtechnique of technique.subtechniques; track subtechnique){
+                          <li>
+                            <span class="caption" [tooltipShow]="true" tooltip [tooltipText]="subtechnique.name + '-' + subtechnique.external_references[0].external_id">{{ subtechnique.name }}</span>
+                          </li>
+                        }
+                      </ul>
+                    }
+                  }
+              </ul>
+            </div>
 
+          </div>
+        }
+      }
+
+    </section>
+  }@else {
+      <section class="flex-all-center h-50vh w-100">
+        <app-loader/>
+      </section>
+    }
 
 
 </main>
-
-
