@@ -161,6 +161,7 @@
                 <td class="col-md-9">
                                 <code><a href="../miscellaneous/variables.html#MODULES_HUB" target="_self" >MODULES_HUB</a></code>
                                 <code><a href="../miscellaneous/variables.html#DIRECTIVES_HUB" target="_self" >DIRECTIVES_HUB</a></code>
+                                <code><a href="../miscellaneous/variables.html#UI_KIT_HUB" target="_self" >UI_KIT_HUB</a></code>
                 </td>
             </tr>
 
@@ -200,12 +201,24 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clusters" >clusters</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#destroy$" >destroy$</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hackerType" >hackerType</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#hubFacade" >hubFacade</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hubService" >hubService</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -217,23 +230,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#mitreDataFilter$" >mitreDataFilter$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#mitreDataInfo$" >mitreDataInfo$</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#mitreHerarchyData" >mitreHerarchyData</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#mitreSubTechniques" >mitreSubTechniques</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#mitreTactics" >mitreTactics</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#mitreTechniques" >mitreTechniques</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -259,6 +264,10 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#filter" >filter</a>
+                            </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
@@ -290,7 +299,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -307,6 +316,82 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>filter</b></span>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filter(hackerType: <a href="../undefineds/HackerType.html" target="_self">HackerType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Filters the Mitre Data based on the hacker type.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hackerType</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#HackerType" target="_self" >HackerType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The type of hacker to filter.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -329,14 +414,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="164"
-                                    class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:164</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:177</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that destroys the component.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -368,14 +455,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="160"
-                                    class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:160</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:169</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles the logout interaction.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -395,6 +484,44 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="clusters"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>clusters</b></span>
+                        <a href="#clusters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ClusterConfig.html" target="_self" >ClusterConfig[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configurations for clusters.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="destroy$"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -410,10 +537,48 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:97</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject for managing the destruction of observables.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hackerType"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hackerType</b></span>
+                        <a href="#hackerType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>HackerType</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Enumeration of hacker types.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -436,10 +601,48 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:85</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Facade for interacting with the Hub module store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hubService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hubService</b></span>
+                        <a href="#hubService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(HubService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hub service for Hub-specific operations.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -466,98 +669,23 @@
                         <i>Default value : </i><code>this.hubFacade.mitreData$.pipe(
     filter(Boolean),
     takeUntil(this.destroy$)
-  ).subscribe((data: MitreAttackData) &#x3D;&gt; {
-    this.mitreData &#x3D; {
-      ...data
-    }
-
-    // Prima scrematura dei dati
-    this.mitreTactics &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;x-mitre-tactic&#x27;);
-
-    this. mitreTechniques &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;attack-pattern&#x27; &amp;&amp; mitreInfo.x_mitre_is_subtechnique &#x3D;&#x3D;&#x3D; false);
-
-
-    this. mitreSubTechniques &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;attack-pattern&#x27; &amp;&amp; mitreInfo.x_mitre_is_subtechnique &#x3D;&#x3D;&#x3D; true);
-
-
-        // Creare una mappa delle relazioni subtechnique-of
-        const subtechniqueMap: { [key: string]: MitreAttackInfo[] } &#x3D; {};
-        this.mitreData.objects.forEach((mitreInfo) &#x3D;&gt; {
-            if (mitreInfo.relationship_type &#x3D;&#x3D;&#x3D; &#x27;subtechnique-of&#x27;) {
-                if (!subtechniqueMap[mitreInfo.target_ref]) {
-                    subtechniqueMap[mitreInfo.target_ref] &#x3D; [];
-                }
-                const subtechnique &#x3D; this.mitreSubTechniques.find(st &#x3D;&gt; st.id &#x3D;&#x3D;&#x3D; mitreInfo.source_ref);
-                if (subtechnique) {
-                    subtechniqueMap[mitreInfo.target_ref].push(subtechnique);
-                }
-            }
-        });
-
-        // Creare una mappa delle entità &quot;uses&quot;
-        const usesMap: { [key: string]: MitreAttackInfo[] } &#x3D; {};
-        this.mitreData.objects.forEach((mitreInfo) &#x3D;&gt; {
-            if (mitreInfo.relationship_type &#x3D;&#x3D;&#x3D; &#x27;uses&#x27;) {
-                if (!usesMap[mitreInfo.target_ref]) {
-                    usesMap[mitreInfo.target_ref] &#x3D; [];
-                }
-                const entity &#x3D; this.mitreData?.objects.find(e &#x3D;&gt; e.id &#x3D;&#x3D;&#x3D; mitreInfo.source_ref);
-                if (entity) {
-                    usesMap[mitreInfo.target_ref].push(entity);
-                }
-            }
-        });
-
-        // Creare una mappa delle tecniche
-        const techniqueMap: { [key: string]: MitreAttackInfo &amp; { subtechniques: MitreAttackInfo[], uses: MitreAttackInfo[] } } &#x3D; {};
-        this.mitreTechniques.forEach((technique) &#x3D;&gt; {
-            const subtechniques &#x3D; subtechniqueMap[technique.id] || [];
-            const uses &#x3D; usesMap[technique.id] || [];
-            techniqueMap[technique.id] &#x3D; {
-                ...technique,
-                subtechniques,
-                uses
-            };
-        });
-
-        // Creare una mappa delle subtecniche
-        this.mitreSubTechniques.forEach((subtechnique) &#x3D;&gt; {
-            const uses &#x3D; usesMap[subtechnique.id] || [];
-            techniqueMap[subtechnique.id] &#x3D; {
-                ...subtechnique,
-                subtechniques: [],  // le subtecniche non hanno ulteriori subtecniche
-                uses
-            };
-        });
-
-        // Creare una lista delle tattiche con le tecniche, subtecniche e entità &quot;uses&quot;
-        this.mitreHerarchyData &#x3D; this.mitreTactics.map((tactic) &#x3D;&gt; {
-            const techniques &#x3D; this.mitreTechniques.filter((technique) &#x3D;&gt; {
-                return technique.kill_chain_phases &amp;&amp;
-                       technique.kill_chain_phases.some(kcp &#x3D;&gt; kcp.phase_name &#x3D;&#x3D;&#x3D; tactic.x_mitre_shortname);
-            }).map((technique) &#x3D;&gt; techniqueMap[technique.id]);
-
-            return {
-                ...tactic,
-                techniques
-            };
-        });
-
-        console.log(&quot;tacticsWithTechniquesAndSubtechniquesAndUses&quot;, this.mitreHerarchyData);
-
-
+  ).subscribe((data: ExtendedMitreAttackInfo[]) &#x3D;&gt; {
+    this.mitreHerarchyData &#x3D; data;
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:149</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to the Mitre Data.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -586,10 +714,54 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:121</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Current Mitre Attack data.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mitreDataFilter$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>mitreDataFilter$</b></span>
+                        <a href="#mitreDataFilter$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#HackerType" target="_self" >Observable&lt;HackerType&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.hubFacade.mitreDataFilter$</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable that provides the current Mitre Attack data filter based on the hacker type.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -607,7 +779,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/MitreAttackData.html" target="_self" >Observable&lt;MitreAttackData | null&gt;</a></code>
+                        <i>Type : </i>    <code>Observable&lt;[] | null&gt;</code>
 
                     </td>
                 </tr>
@@ -618,10 +790,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:109</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable that provides the extended Mitre Attack information or null.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -639,7 +817,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>()[]</code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ExtendedMitreAttackInfo" target="_self" >ExtendedMitreAttackInfo[]</a></code>
 
                     </td>
                 </tr>
@@ -650,106 +828,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:127</a></div>
                         </td>
                     </tr>
 
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="mitreSubTechniques"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>mitreSubTechniques</b></span>
-                        <a href="#mitreSubTechniques"><span class="icon ion-ios-link"></span></a>
-                    </span>
+                    <div class="io-description"><p>Hierarchy of extended Mitre Attack data.</p>
+</div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/MitreAttackInfo.html" target="_self" >MitreAttackInfo[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:54</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mitreTactics"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>mitreTactics</b></span>
-                        <a href="#mitreTactics"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/MitreAttackInfo.html" target="_self" >MitreAttackInfo[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:52</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mitreTechniques"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>mitreTechniques</b></span>
-                        <a href="#mitreTechniques"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/MitreAttackInfo.html" target="_self" >MitreAttackInfo[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:53</a></div>
-                        </td>
-                    </tr>
-
 
         </tbody>
     </table>
@@ -772,10 +860,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:79</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Facade for interacting with the user store.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -804,10 +898,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:103</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable that provides the current user&#39;s information.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -830,10 +930,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/modules/deas/hub/hub.component.ts:73</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>User service for managing user-related operations.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -844,7 +950,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MitreAttackInfo } from &#x27;./../../../shared/model/mitre.model&#x27;;
-import { CommonModule, DOCUMENT } from &#x27;@angular/common&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Component, inject } from &#x27;@angular/core&#x27;;
 import { UserService } from &#x27;../../../core/modules/user/service/user.service&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
@@ -854,16 +960,45 @@ import { MitreAttackData } from &#x27;../../../shared/model/mitre.model&#x27;;
 import { UserModel } from &#x27;../../../core/modules/user/models/user.model&#x27;;
 import { UserFacade } from &#x27;../../../core/modules/user/store/user.facade&#x27;;
 import { TooltipDirective } from &#x27;../../../libraries/directives/tooltip.directive&#x27;;
+import { ExtendedMitreAttackInfo } from &#x27;./models/hub.models&#x27;;
+import { HubService } from &#x27;./services/hub.service&#x27;;
+import { LoaderComponent } from &#x27;../../../libraries/components/loader/loader.component&#x27;;
+import { CardComponent } from &#x27;../../../libraries/components/card/card.component&#x27;;
+import { CardAction, CardConfig, CardIcon } from &#x27;../../../libraries/models/card.model&#x27;;
+import { ClusterComponent } from &#x27;../../../libraries/components/cluster/cluster.component&#x27;;
+import { ClusterConfig } from &#x27;../../../libraries/models/cluster.model&#x27;;
+import { MitreAttackComponent } from &#x27;../mitre-attack/mitre-attack.component&#x27;;
+import { HackerType } from &#x27;../../../shared/constants/groupHackers.model&#x27;;
 
 
+
+/**
+ * Array of modules used in the hub component.
+ * @type {Array&lt;Modules&gt;}
+ */
 const MODULES_HUB &#x3D; [
   RouterModule,
   CommonModule
 ]
 
+/**
+ * Array of directives used in the Hub component.
+ */
 const DIRECTIVES_HUB &#x3D; [
   TooltipDirective
 ]
+
+/**
+ * Array containing components related to the UI kit hub.
+ * @type {Array&lt;Components&gt;}
+ */
+const UI_KIT_HUB &#x3D; [
+  MitreAttackComponent,
+  LoaderComponent,
+  CardComponent,
+  ClusterComponent
+]
+
 
 
 @Component({
@@ -871,145 +1006,128 @@ const DIRECTIVES_HUB &#x3D; [
   standalone: true,
   imports: [
     ...MODULES_HUB,
-    ...DIRECTIVES_HUB
+    ...DIRECTIVES_HUB,
+    ...UI_KIT_HUB
   ],
   templateUrl: &#x27;./hub.component.html&#x27;,
   styleUrl: &#x27;./hub.component.scss&#x27;,
   providers: [HubFacade]
 })
+/**
+ * Represents the Hub component.
+ */
 export class HubComponent {
+  /**
+   * User service for managing user-related operations.
+   * @private
+   */
   private userService &#x3D; inject(UserService);
-  private hubFacade &#x3D; inject(HubFacade);
-  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  /**
+   * Facade for interacting with the user store.
+   * @private
+   */
   private userFacade &#x3D; inject(UserFacade);
 
+  /**
+   * Facade for interacting with the Hub module store.
+   * @private
+   */
+  private hubFacade &#x3D; inject(HubFacade);
 
+  /**
+   * Hub service for Hub-specific operations.
+   * @public
+   */
+  public hubService &#x3D; inject(HubService);
+
+  /**
+   * Subject for managing the destruction of observables.
+   * @private
+   */
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  /**
+   * Observable that provides the current user&#x27;s information.
+   * @public
+   */
   public userInfo$: Observable&lt;UserModel&gt; &#x3D; this.userFacade.user$;
-  public mitreDataInfo$: Observable&lt;MitreAttackData | null&gt; &#x3D; this.hubFacade.mitreData$;
 
+  /**
+   * Observable that provides the extended Mitre Attack information or null.
+   * @public
+   */
+  public mitreDataInfo$: Observable&lt;ExtendedMitreAttackInfo[] | null&gt; &#x3D; this.hubFacade.mitreData$;
 
+  /**
+   * Observable that provides the current Mitre Attack data filter based on the hacker type.
+   * @public
+   */
+  public mitreDataFilter$: Observable&lt;HackerType&gt; &#x3D; this.hubFacade.mitreDataFilter$;
 
-  // data set
-  public mitreData: MitreAttackData|null &#x3D; null;
+  /**
+   * Current Mitre Attack data.
+   * @public
+   */
+  public mitreData: MitreAttackData | null &#x3D; null;
 
+  /**
+   * Hierarchy of extended Mitre Attack data.
+   * @public
+   */
+  public mitreHerarchyData: ExtendedMitreAttackInfo[] &#x3D; [];
 
+  /**
+   * Configurations for clusters.
+   * @public
+   */
+  public clusters: ClusterConfig[] &#x3D; [];
 
-  public mitreTactics:MitreAttackInfo[] &#x3D; [];
-  public mitreTechniques:MitreAttackInfo[] &#x3D; [];
-  public mitreSubTechniques:MitreAttackInfo[] &#x3D; [];
+  /**
+   * Enumeration of hacker types.
+   * @public
+   */
+  public hackerType &#x3D; HackerType;
 
-
-  public mitreHerarchyData : (MitreAttackInfo &amp; {
-    techniques: (MitreAttackInfo &amp; {
-    subtechniques: MitreAttackInfo[];
-    })[];
-  })[] &#x3D; []
-
-
-
-  constructor(
-  ) {
+  constructor() {
     this.hubFacade.getMitreData();
   }
 
+  /**
+   * Subscription to the Mitre Data.
+   * @public
+   */
   public mitraDataSubscription: Subscription &#x3D; this.hubFacade.mitreData$.pipe(
     filter(Boolean),
     takeUntil(this.destroy$)
-  ).subscribe((data: MitreAttackData) &#x3D;&gt; {
-    this.mitreData &#x3D; {
-      ...data
-    }
-
-    // Prima scrematura dei dati
-    this.mitreTactics &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;x-mitre-tactic&#x27;);
-
-    this. mitreTechniques &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;attack-pattern&#x27; &amp;&amp; mitreInfo.x_mitre_is_subtechnique &#x3D;&#x3D;&#x3D; false);
-
-
-    this. mitreSubTechniques &#x3D; this.mitreData.objects.filter(
-      (mitreInfo)&#x3D;&gt; mitreInfo.type &#x3D;&#x3D;&#x3D; &#x27;attack-pattern&#x27; &amp;&amp; mitreInfo.x_mitre_is_subtechnique &#x3D;&#x3D;&#x3D; true);
-
-
-        // Creare una mappa delle relazioni subtechnique-of
-        const subtechniqueMap: { [key: string]: MitreAttackInfo[] } &#x3D; {};
-        this.mitreData.objects.forEach((mitreInfo) &#x3D;&gt; {
-            if (mitreInfo.relationship_type &#x3D;&#x3D;&#x3D; &#x27;subtechnique-of&#x27;) {
-                if (!subtechniqueMap[mitreInfo.target_ref]) {
-                    subtechniqueMap[mitreInfo.target_ref] &#x3D; [];
-                }
-                const subtechnique &#x3D; this.mitreSubTechniques.find(st &#x3D;&gt; st.id &#x3D;&#x3D;&#x3D; mitreInfo.source_ref);
-                if (subtechnique) {
-                    subtechniqueMap[mitreInfo.target_ref].push(subtechnique);
-                }
-            }
-        });
-
-        // Creare una mappa delle entità &quot;uses&quot;
-        const usesMap: { [key: string]: MitreAttackInfo[] } &#x3D; {};
-        this.mitreData.objects.forEach((mitreInfo) &#x3D;&gt; {
-            if (mitreInfo.relationship_type &#x3D;&#x3D;&#x3D; &#x27;uses&#x27;) {
-                if (!usesMap[mitreInfo.target_ref]) {
-                    usesMap[mitreInfo.target_ref] &#x3D; [];
-                }
-                const entity &#x3D; this.mitreData?.objects.find(e &#x3D;&gt; e.id &#x3D;&#x3D;&#x3D; mitreInfo.source_ref);
-                if (entity) {
-                    usesMap[mitreInfo.target_ref].push(entity);
-                }
-            }
-        });
-
-        // Creare una mappa delle tecniche
-        const techniqueMap: { [key: string]: MitreAttackInfo &amp; { subtechniques: MitreAttackInfo[], uses: MitreAttackInfo[] } } &#x3D; {};
-        this.mitreTechniques.forEach((technique) &#x3D;&gt; {
-            const subtechniques &#x3D; subtechniqueMap[technique.id] || [];
-            const uses &#x3D; usesMap[technique.id] || [];
-            techniqueMap[technique.id] &#x3D; {
-                ...technique,
-                subtechniques,
-                uses
-            };
-        });
-
-        // Creare una mappa delle subtecniche
-        this.mitreSubTechniques.forEach((subtechnique) &#x3D;&gt; {
-            const uses &#x3D; usesMap[subtechnique.id] || [];
-            techniqueMap[subtechnique.id] &#x3D; {
-                ...subtechnique,
-                subtechniques: [],  // le subtecniche non hanno ulteriori subtecniche
-                uses
-            };
-        });
-
-        // Creare una lista delle tattiche con le tecniche, subtecniche e entità &quot;uses&quot;
-        this.mitreHerarchyData &#x3D; this.mitreTactics.map((tactic) &#x3D;&gt; {
-            const techniques &#x3D; this.mitreTechniques.filter((technique) &#x3D;&gt; {
-                return technique.kill_chain_phases &amp;&amp;
-                       technique.kill_chain_phases.some(kcp &#x3D;&gt; kcp.phase_name &#x3D;&#x3D;&#x3D; tactic.x_mitre_shortname);
-            }).map((technique) &#x3D;&gt; techniqueMap[technique.id]);
-
-            return {
-                ...tactic,
-                techniques
-            };
-        });
-
-        console.log(&quot;tacticsWithTechniquesAndSubtechniquesAndUses&quot;, this.mitreHerarchyData);
-
-
+  ).subscribe((data: ExtendedMitreAttackInfo[]) &#x3D;&gt; {
+    this.mitreHerarchyData &#x3D; data;
   });
 
+  /**
+   * Filters the Mitre Data based on the hacker type.
+   * @param hackerType The type of hacker to filter.
+   * @public
+   */
+  public filter(hackerType: HackerType): void {
+    this.hubFacade.filtreMitreData(this.mitreHerarchyData, hackerType);
+  }
 
-
-  public onLogout():void{
+  /**
+   * Handles the logout interaction.
+   * @public
+   */
+  public onLogout(): void {
     this.userService.setUserLogOut();
   }
 
+  /**
+   * Lifecycle hook that destroys the component.
+   * @public
+   */
   public ngOnDestroy(): void {
     this.destroy$.next();
   }
-
 
 
 
@@ -1020,59 +1138,40 @@ export class HubComponent {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">
 
-&lt;main class&#x3D;&quot;hub p-5&quot;&gt;
+&lt;main class&#x3D;&quot;hub container-fluid&quot;&gt;
 
-  &lt;section class&#x3D;&quot;hub__card-grid d-grid columns&quot;&gt;
-    @if(mitreDataInfo$ | async; as MitreData){
 
-      @if(mitreHerarchyData.length){
-        @for( tactic of mitreHerarchyData; track tactic){
-
-          &lt;div class&#x3D;&quot;card p-3&quot;&gt;
-            &lt;h6&gt;
-              {{ tactic.name }}
-            &lt;/h6&gt;
-            &lt;small class&#x3D;&quot;fw-bold pb-2&quot; &gt; {{ tactic.id }}&lt;/small&gt;
-
-            &lt;div class&#x3D;&quot;card__list&quot;&gt;
-              &lt;p&gt; {{&#x27;Techniques:&#x27;}}&lt;/p&gt;
-              &lt;ul&gt;
-                @for( technique of tactic.techniques; track technique){
-                  &lt;li [tooltipShow]&#x3D;&quot;true&quot; tooltip [tooltipText]&#x3D;&quot;technique.name + &#x27;-&#x27; + technique.external_references[0].external_id&quot;&gt;
-                    &lt;span&gt;{{ technique.name }}&lt;/span&gt;
-                  &lt;/li&gt;
-                    @if(technique.subtechniques.length){
-                      &lt;p&gt; {{&#x27;Subtechniques:&#x27;  }} &lt;/p&gt;
-                      &lt;ul&gt;
-                        @for( subtechnique of technique.subtechniques; track subtechnique){
-                          &lt;li&gt;
-                            &lt;p&gt;{{subtechnique.id}}&lt;/p&gt;
-                            &lt;span [tooltipShow]&#x3D;&quot;true&quot; tooltip [tooltipText]&#x3D;&quot;subtechnique.name + &#x27;-&#x27; + subtechnique.external_references[0].external_id&quot;&gt;{{ subtechnique.name }}&lt;/span&gt;
-                          &lt;/li&gt;
-                        }
-                      &lt;/ul&gt;
-                    }
-                  }
-              &lt;/ul&gt;
-            &lt;/div&gt;
-
-          &lt;/div&gt;
-        }
-      }
-
-    }@else {
-      &lt;h1&gt;Loading...&lt;/h1&gt;
-    }
+  &lt;section class&#x3D;&quot;hub__logout&quot;&gt;
+    &lt;button class&#x3D;&quot;&quot; (click)&#x3D;&quot;onLogout()&quot;&gt;
+      {{&#x27;Log out&#x27;}}
+    &lt;/button&gt;
   &lt;/section&gt;
+
+  @if(mitreDataFilter$ | async; as MitreFilter){
+
+    &lt;section class&#x3D;&quot;hub__components&quot;&gt;
+      &lt;button class&#x3D;&quot;{{ MitreFilter &#x3D;&#x3D;&#x3D; hackerType.GENERIC ? &#x27;active&#x27; : &#x27;&#x27;}}&quot; (click)&#x3D;&quot;filter(hackerType.GENERIC)&quot;&gt;
+        {{&#x27;GENERIC&#x27;}}
+      &lt;/button&gt;
+
+      &lt;button class&#x3D;&quot;{{ MitreFilter &#x3D;&#x3D;&#x3D; hackerType.APT28 ? &#x27;active&#x27; : &#x27;&#x27;}}&quot; (click)&#x3D;&quot;filter(hackerType.APT28)&quot;&gt;
+        {{&#x27;APT 28&#x27;}}
+      &lt;/button&gt;
+
+      &lt;button class&#x3D;&quot;{{ MitreFilter &#x3D;&#x3D;&#x3D; hackerType.APT29 ? &#x27;active&#x27; : &#x27;&#x27;}}&quot; (click)&#x3D;&quot;filter(hackerType.APT29)&quot;&gt;
+        {{&#x27;APT 29&#x27;}}
+      &lt;/button&gt;
+    &lt;/section&gt;
+  }
+
+
+  &lt;div class&#x3D;&quot;hub__content container-lg px-lg-4&quot;&gt;
+    &lt;app-mitre-attack/&gt;
+  &lt;/div&gt;
+
 
 
 &lt;/main&gt;
-
-&lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;onLogout()&quot;&gt;
-  Log out
-&lt;/button&gt;
-
-
 
 
 </code></pre>
@@ -1104,8 +1203,8 @@ export class HubComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><main class="hub p-5">  <section class="hub__card-grid d-grid columns">    @if(mitreDataInfo$ | async; as MitreData){      @if(mitreHerarchyData.length){        @for( tactic of mitreHerarchyData; track tactic){          <div class="card p-3">            <h6>              {{ tactic.name }}            </h6>            <small class="fw-bold pb-2" > {{ tactic.id }}</small>            <div class="card__list">              <p> {{\'Techniques:\'}}</p>              <ul>                @for( technique of tactic.techniques; track technique){                  <li [tooltipShow]="true" tooltip [tooltipText]="technique.name + \'-\' + technique.external_references[0].external_id">                    <span>{{ technique.name }}</span>                  </li>                    @if(technique.subtechniques.length){                      <p> {{\'Subtechniques:\'  }} </p>                      <ul>                        @for( subtechnique of technique.subtechniques; track subtechnique){                          <li>                            <p>{{subtechnique.id}}</p>                            <span [tooltipShow]="true" tooltip [tooltipText]="subtechnique.name + \'-\' + subtechnique.external_references[0].external_id">{{ subtechnique.name }}</span>                          </li>                        }                      </ul>                    }                  }              </ul>            </div>          </div>        }      }    }@else {      <h1>Loading...</h1>    }  </section></main><button class="btn btn-primary" (click)="onLogout()">  Log out</button></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DeasComponent', 'selector': 'app-deas'},{'name': 'HubComponent', 'selector': 'app-hub'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'UserLoginSystemComponent', 'selector': 'app-user-login-system'}];
+        var COMPONENT_TEMPLATE = '<div><main class="hub container-fluid">  <section class="hub__logout">    <button class="" (click)="onLogout()">      {{\'Log out\'}}    </button>  </section>  @if(mitreDataFilter$ | async; as MitreFilter){    <section class="hub__components">      <button class="{{ MitreFilter === hackerType.GENERIC ? \'active\' : \'\'}}" (click)="filter(hackerType.GENERIC)">        {{\'GENERIC\'}}      </button>      <button class="{{ MitreFilter === hackerType.APT28 ? \'active\' : \'\'}}" (click)="filter(hackerType.APT28)">        {{\'APT 28\'}}      </button>      <button class="{{ MitreFilter === hackerType.APT29 ? \'active\' : \'\'}}" (click)="filter(hackerType.APT29)">        {{\'APT 29\'}}      </button>    </section>  }  <div class="hub__content container-lg px-lg-4">    <app-mitre-attack/>  </div></main></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'ChipComponent', 'selector': 'app-chip'},{'name': 'ChipsetComponent', 'selector': 'app-chip-set'},{'name': 'ClusterComponent', 'selector': 'app-cluster'},{'name': 'DeasComponent', 'selector': 'app-deas'},{'name': 'HubComponent', 'selector': 'app-hub'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MitreAttackComponent', 'selector': 'app-mitre-attack'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'UserLoginSystemComponent', 'selector': 'app-user-login-system'}];
     var DIRECTIVES = [{'name': 'TooltipDirective', 'selector': '[tooltip]'}];
     var ACTUAL_COMPONENT = {'name': 'HubComponent'};
 </script>

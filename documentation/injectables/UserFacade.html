@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Facade service for managing user-related state and actions.</p>
+
+            </p>
 
 
 
@@ -177,12 +184,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the UserFacade instance.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -191,6 +200,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -205,6 +215,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The NgRx store for managing application state.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -242,14 +256,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:31</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Dispatches a login action to authenticate the user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -260,6 +276,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -274,6 +291,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The user object containing information from the authentication provider.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -320,10 +341,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/modules/user/store/user.facade.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable stream of the current user information.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -333,21 +360,36 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;;
-import { Store } from &quot;@ngrx/store&quot;;
-import { user$ } from &quot;./user.selectors&quot;;
-import { filter, Observable } from &quot;rxjs&quot;;
-import { login } from &quot;./user.actions&quot;;
-import { UserModel } from &quot;../models/user.model&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { filter } from &#x27;rxjs/operators&#x27;;
+import { UserModel } from &#x27;../models/user.model&#x27;;
+import { login } from &#x27;./user.actions&#x27;;
+import { user$ } from &#x27;./user.selectors&#x27;;
 
-
+/**
+ * Facade service for managing user-related state and actions.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class UserFacade {
+  /**
+   * Observable stream of the current user information.
+   * @type {Observable&lt;UserModel&gt;}
+   */
   public user$: Observable&lt;UserModel&gt; &#x3D; this.store.select(user$).pipe(filter(Boolean));
 
+  /**
+   * Initializes the UserFacade instance.
+   * @param {Store} store The NgRx store for managing application state.
+   */
   constructor(private store: Store) {}
 
-
+  /**
+   * Dispatches a login action to authenticate the user.
+   * @param {UserModel} user The user object containing information from the authentication provider.
+   * @returns {void}
+   */
   public login(user: UserModel): void {
     this.store.dispatch(login({ user }));
   }

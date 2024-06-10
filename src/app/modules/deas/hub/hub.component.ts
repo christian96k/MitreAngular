@@ -21,15 +21,26 @@ import { HackerType } from '../../../shared/constants/groupHackers.model';
 
 
 
+/**
+ * Array of modules used in the hub component.
+ * @type {Array<Modules>}
+ */
 const MODULES_HUB = [
   RouterModule,
   CommonModule
 ]
 
+/**
+ * Array of directives used in the Hub component.
+ */
 const DIRECTIVES_HUB = [
   TooltipDirective
 ]
 
+/**
+ * Array containing components related to the UI kit hub.
+ * @type {Array<Components>}
+ */
 const UI_KIT_HUB = [
   MitreAttackComponent,
   LoaderComponent,
@@ -51,83 +62,120 @@ const UI_KIT_HUB = [
   styleUrl: './hub.component.scss',
   providers: [HubFacade]
 })
+/**
+ * Represents the Hub component.
+ */
 export class HubComponent {
-  // user services
+  /**
+   * User service for managing user-related operations.
+   * @private
+   */
   private userService = inject(UserService);
+
+  /**
+   * Facade for interacting with the user store.
+   * @private
+   */
   private userFacade = inject(UserFacade);
 
-  // hub services
+  /**
+   * Facade for interacting with the Hub module store.
+   * @private
+   */
   private hubFacade = inject(HubFacade);
-  public hubService  = inject(HubService);
 
-  // obeservers
+  /**
+   * Hub service for Hub-specific operations.
+   * @public
+   */
+  public hubService = inject(HubService);
+
+  /**
+   * Subject for managing the destruction of observables.
+   * @private
+   */
   private destroy$ = new Subject<void>();
+
+  /**
+   * Observable that provides the current user's information.
+   * @public
+   */
   public userInfo$: Observable<UserModel> = this.userFacade.user$;
+
+  /**
+   * Observable that provides the extended Mitre Attack information or null.
+   * @public
+   */
   public mitreDataInfo$: Observable<ExtendedMitreAttackInfo[] | null> = this.hubFacade.mitreData$;
+
+  /**
+   * Observable that provides the current Mitre Attack data filter based on the hacker type.
+   * @public
+   */
   public mitreDataFilter$: Observable<HackerType> = this.hubFacade.mitreDataFilter$;
 
+  /**
+   * Current Mitre Attack data.
+   * @public
+   */
+  public mitreData: MitreAttackData | null = null;
 
-  // data set
-  public mitreData: MitreAttackData|null = null;
+  /**
+   * Hierarchy of extended Mitre Attack data.
+   * @public
+   */
   public mitreHerarchyData: ExtendedMitreAttackInfo[] = [];
-  public mitreHerarchyDataAPT28: ExtendedMitreAttackInfo[] = [];
 
-
+  /**
+   * Configurations for clusters.
+   * @public
+   */
   public clusters: ClusterConfig[] = [];
+
+  /**
+   * Enumeration of hacker types.
+   * @public
+   */
   public hackerType = HackerType;
 
-
-  constructor(
-  ) {
+  constructor() {
     this.hubFacade.getMitreData();
   }
 
-
-  // Subscription to the Mitre Data
+  /**
+   * Subscription to the Mitre Data.
+   * @public
+   */
   public mitraDataSubscription: Subscription = this.hubFacade.mitreData$.pipe(
     filter(Boolean),
     takeUntil(this.destroy$)
   ).subscribe((data: ExtendedMitreAttackInfo[]) => {
     this.mitreHerarchyData = data;
-    console.log("tacticsWithTechniquesAndSubtechniquesAndUses", this.mitreHerarchyData);
-    console.log("tacticsWithTechniquesAndSubtechniquesAndUsesFiltered", this.mitreHerarchyDataAPT28);
   });
 
-
-  filter(hackerType:HackerType){
+  /**
+   * Filters the Mitre Data based on the hacker type.
+   * @param hackerType The type of hacker to filter.
+   * @public
+   */
+  public filter(hackerType: HackerType): void {
     this.hubFacade.filtreMitreData(this.mitreHerarchyData, hackerType);
   }
 
-  // logout interaction
-  public onLogout():void{
+  /**
+   * Handles the logout interaction.
+   * @public
+   */
+  public onLogout(): void {
     this.userService.setUserLogOut();
   }
 
-  // end lifecycle
+  /**
+   * Lifecycle hook that destroys the component.
+   * @public
+   */
   public ngOnDestroy(): void {
     this.destroy$.next();
-  }
-
-
-
-  public cardConfig:CardConfig = {
-    header:{
-      label: 'Tecnica:',
-      class: '',
-      value: 'Virus total Placeholder'
-    },
-    footer: [
-      {
-        icon: CardIcon.info,
-        action: (actionType) => console.log('action_:::', actionType),
-        actionType: CardAction.INFO
-      },
-      {
-        icon: CardIcon.settings,
-        action: (actionType) => console.log('action_:::', actionType),
-        actionType: CardAction.SETTINGS
-      }
-    ]
   }
 
 

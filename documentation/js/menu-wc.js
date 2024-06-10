@@ -33,6 +33,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-paper"></span>README
                             </a>
                         </li>
+                        <li class="link">
+                            <a href="license.html"  data-type="chapter-link">
+                                <span class="icon ion-ios-paper"></span>LICENSE
+                            </a>
+                        </li>
                                 <li class="link">
                                     <a href="dependencies.html" data-type="chapter-link">
                                         <span class="icon ion-ios-list"></span>Dependencies
@@ -57,13 +62,31 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/AppComponent.html" data-type="entity-link" >AppComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/CardComponent.html" data-type="entity-link" >CardComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ChipComponent.html" data-type="entity-link" >ChipComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ChipsetComponent.html" data-type="entity-link" >ChipsetComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ClusterComponent.html" data-type="entity-link" >ClusterComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/DeasComponent.html" data-type="entity-link" >DeasComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/HubComponent.html" data-type="entity-link" >HubComponent</a>
                             </li>
                             <li class="link">
-                                <a href="components/TableComponent.html" data-type="entity-link" >TableComponent</a>
+                                <a href="components/LoaderComponent.html" data-type="entity-link" >LoaderComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/MitreAttackComponent.html" data-type="entity-link" >MitreAttackComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ModalComponent.html" data-type="entity-link" >ModalComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/UserLoginSystemComponent.html" data-type="entity-link" >UserLoginSystemComponent</a>
@@ -104,6 +127,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/HubService.html" data-type="entity-link" >HubService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/MitreAttackService.html" data-type="entity-link" >MitreAttackService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/UserEffects.html" data-type="entity-link" >UserEffects</a>
                                 </li>
                                 <li class="link">
@@ -126,6 +152,30 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Auth0Error.html" data-type="entity-link" >Auth0Error</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/CardConfig.html" data-type="entity-link" >CardConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/CardFooter.html" data-type="entity-link" >CardFooter</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/CardHeader.html" data-type="entity-link" >CardHeader</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ChipConfig.html" data-type="entity-link" >ChipConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ChipsetConfig.html" data-type="entity-link" >ChipsetConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ChipsetContent.html" data-type="entity-link" >ChipsetContent</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ChipsetHeader.html" data-type="entity-link" >ChipsetHeader</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ClusterConfig.html" data-type="entity-link" >ClusterConfig</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/Definition.html" data-type="entity-link" >Definition</a>
                             </li>
                             <li class="link">
@@ -138,28 +188,34 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/KillChainPhase.html" data-type="entity-link" >KillChainPhase</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/MitreAttackConfig.html" data-type="entity-link" >MitreAttackConfig</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/MitreAttackData.html" data-type="entity-link" >MitreAttackData</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MitreAttackFooter.html" data-type="entity-link" >MitreAttackFooter</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MitreAttackHeader.html" data-type="entity-link" >MitreAttackHeader</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/MitreAttackInfo.html" data-type="entity-link" >MitreAttackInfo</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/MitreConfig.html" data-type="entity-link" >MitreConfig</a>
+                                <a href="interfaces/MitreAttackInfo-1.html" data-type="entity-link" >MitreAttackInfo</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/MitreParent.html" data-type="entity-link" >MitreParent</a>
+                                <a href="interfaces/MitreCells.html" data-type="entity-link" >MitreCells</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/MitreTactics.html" data-type="entity-link" >MitreTactics</a>
+                                <a href="interfaces/MitreCellsContent.html" data-type="entity-link" >MitreCellsContent</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/MitreTechnique.html" data-type="entity-link" >MitreTechnique</a>
+                                <a href="interfaces/ModalConfig.html" data-type="entity-link" >ModalConfig</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/TableConfig.html" data-type="entity-link" >TableConfig</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/UserCredits.html" data-type="entity-link" >UserCredits</a>
+                                <a href="interfaces/ModalContent.html" data-type="entity-link" >ModalContent</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/UserModel.html" data-type="entity-link" >UserModel</a>
@@ -177,6 +233,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
                             </li>

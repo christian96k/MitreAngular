@@ -1,10 +1,17 @@
-import { HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable, switchMap, catchError, throwError, of } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
 import { UserFacade } from '../modules/user/store/user.facade';
+import { HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpEvent } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 
 
+/**
+ * Interceptor for API requests to add authorization token.
+ * @param {HttpRequest<unknown>} request The HTTP request to be intercepted.
+ * @param {HttpHandler} next The next HTTP handler.
+ * @returns {Observable<HttpEvent<unknown>>} An observable of the HTTP event.
+ */
 export const apiInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
   next: HttpHandlerFn
@@ -12,11 +19,11 @@ export const apiInterceptor: HttpInterceptorFn = (
   const userFacade = inject(UserFacade);
   const authService = inject(AuthService);
 
-  console.log('interceptor')
+  console.log('interceptor');
   return authService.getAccessTokenSilently().pipe(
     switchMap((token) => {
       if (!token) {
-        return throwError(() => new Error('Autht 0 Token non presente'));
+        return throwError(() => new Error('Auth0 Token not present'));
       }
       return next(modifyReq(request, token));
     }),
@@ -30,6 +37,12 @@ export const apiInterceptor: HttpInterceptorFn = (
   );
 };
 
+/**
+ * Modifies the request by adding authorization token to headers.
+ * @param {HttpRequest<unknown>} request The HTTP request to be modified.
+ * @param {string} token The authorization token.
+ * @returns {HttpRequest<unknown>} The modified HTTP request.
+ */
 function modifyReq(
   request: HttpRequest<unknown>,
   token: string
@@ -40,7 +53,12 @@ function modifyReq(
   });
 }
 
+/**
+ * Modifies the URL of the request if necessary.
+ * @param {string} url The original URL of the request.
+ * @returns {string} The modified URL.
+ */
 function modifyUrl(url: string): string {
-  console.log('url', url)
+  console.log('url', url);
   return `${url}`;
 }

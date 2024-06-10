@@ -1,0 +1,29 @@
+
+@import "variables";
+
+$loader-size: 60px;
+@mixin loader-spinner(){
+  width: $loader-size;
+  height: $loader-size;
+  border: 5px solid $secondary;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+
+
+.loader {
+  @include loader-spinner();
+}
+
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}

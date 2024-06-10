@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Subject,takeUntil } from 'rxjs';
+import { Subject,Subscription,takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserFacade } from '../store/user.facade';
@@ -10,7 +10,10 @@ import { UserService } from '../service/user.service';
 import { APP } from '../../../../shared/routes/route.model';
 import { LoaderComponent } from '../../../../libraries/components/loader/loader.component';
 
-
+/**
+ * Array of components used in the Deas component.
+ * @type {Array<Components>}
+ */
 const UI_USER_LOGIN = [
   LoaderComponent
 ];
@@ -29,39 +32,81 @@ const UI_USER_LOGIN = [
   ]
 })
 export class UserLoginSystemComponent {
-  private destroy$ = new Subject<void>();
-  private router = inject(Router);
-  public document = inject(DOCUMENT);
-  public authService = inject(AuthService);
-  private userService = inject(UserService);
+  /**
+   * Subject used for destroying subscriptions.
+   * @type {Subject<void>}
+   */
+  private destroy$: Subject<void> = new Subject<void>();
 
+  /**
+   * The router instance for navigation.
+   * @type {Router}
+   */
+  private router: Router = inject(Router);
+
+  /**
+   * The document object representing the DOM document.
+   * @type {Document}
+   */
+  public document: Document = inject(DOCUMENT);
+
+  /**
+   * The authentication service for handling user authentication.
+   * @type {AuthService}
+   */
+  public authService: AuthService = inject(AuthService);
+
+  /**
+   * The user service for managing user state.
+   * @type {UserService}
+   */
+  private userService: UserService = inject(UserService);
+
+  /**
+   * Initializes the AuthenticationManager instance.
+   * Automatically called when an instance of AuthenticationManager is created.
+   */
   constructor() {
     this.initialize();
   }
 
-  public user$ = this.authService.user$.pipe(
+  /**
+   * Subscribes to user authentication changes and performs necessary actions.
+   * @type {Subscription}
+   */
+  public user$: Subscription = this.authService.user$.pipe(
     takeUntil(this.destroy$)
   ).subscribe((user) => {
-    if(user){
+    if (user) {
       try {
         this.authService.getAccessTokenSilently().pipe(
           takeUntil(this.destroy$)
         ).subscribe(
           token => {
+            // Store access token in local storage
             localStorage.setItem('token', token);
+            // Set user information
             this.userService.setUserInfo(user);
+            // Redirect to the DEAS module
             this.router.navigateByUrl(`${APP.DEAS}`);
           },
         );
       } catch (error) {
+        // Remove token from local storage
         localStorage.removeItem('token');
+        // Handle authentication error
         this.userService.setUserError(error as Auth0Error);
       }
     }
-  })
+  });
 
-  private initialize() {
+  /**
+   * Initializes the authentication process.
+   * @returns {void}
+   */
+  private initialize(): void {
     this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      // Redirect to login page if user is not authenticated
       if (!isAuthenticated)
         this.authService.loginWithRedirect();
     });

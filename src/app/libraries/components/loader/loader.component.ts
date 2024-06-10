@@ -8,9 +8,10 @@ import { Component, Input } from '@angular/core';
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.scss'
 })
+ /**
+ * Reprresents he Loader spinner component.
+ */
 export class LoaderComponent {
-  /**
-   * The diameter of the loading spinner.
-   */
+
 
 }

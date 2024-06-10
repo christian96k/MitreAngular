@@ -124,7 +124,7 @@
             </p>
             <p class="comment">
                 <p>Effects class for the Hub module.
-Handles side effects related to the Hub feature, such as polling projects.</p>
+Handles side effects related to the Hub feature, such as fetching Mitre data.</p>
 
             </p>
 
@@ -142,6 +142,10 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#filterMitreData" >filterMitreData</a>
+                            </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#getMitreData" >getMitreData</a>
@@ -170,12 +174,14 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the HubEffects instance.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -184,6 +190,7 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -198,6 +205,10 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Observable stream of actions dispatched in the application.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>hubService</td>
@@ -210,6 +221,10 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The service for interacting with the Hub feature.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -226,6 +241,44 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterMitreData"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>filterMitreData</b></span>
+                        <a href="#filterMitreData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(filterMitreData),
+      switchMap(({ mitreAttackData, filter }) &#x3D;&gt; of(filterMitreDataSuccess({ mitreAttackData, filter })))
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Effect triggered when a filterMitreData action is dispatched.
+Dispatches a success action with the filtered Mitre data.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -247,7 +300,7 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) &#x3D;&gt; getMitreDataSuccess({mitreAttackData: response}))
+            map((response) &#x3D;&gt; getMitreDataSuccess({ mitreAttackData: this.hubService.mapMitreData(response) }))
           );
       })
     )
@@ -256,10 +309,17 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/deas/hub/store/hub.effects.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Effect triggered when a getMitreData action is dispatched.
+Retrieves Mitre data from the service and dispatches a success action with the retrieved data.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -271,22 +331,30 @@ Handles side effects related to the Hub feature, such as polling projects.</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;;
 import { Actions, createEffect, ofType } from &quot;@ngrx/effects&quot;;
-import { Subject, map, switchMap, takeUntil, timer } from &quot;rxjs&quot;;
+import { map, switchMap } from &quot;rxjs/operators&quot;;
+import { of } from &quot;rxjs&quot;;
 import { HubService } from &quot;../services/hub.service&quot;;
-import { getMitreData, getMitreDataSuccess } from &quot;./hub.actions&quot;;
+import { filterMitreData, filterMitreDataSuccess, getMitreData, getMitreDataSuccess } from &quot;./hub.actions&quot;;
 
 /**
  * Effects class for the Hub module.
- * Handles side effects related to the Hub feature, such as polling projects.
+ * Handles side effects related to the Hub feature, such as fetching Mitre data.
  */
 @Injectable()
 export class HubEffects {
 
-  constructor(
-    private actions$: Actions,
-    private hubService: HubService
-  ) {}
+  /**
+   * Initializes the HubEffects instance.
+   * @param {Actions} actions$ Observable stream of actions dispatched in the application.
+   * @param {HubService} hubService The service for interacting with the Hub feature.
+   */
+    constructor(private actions$: Actions, private hubService: HubService) {}
 
+  /**
+   * Effect triggered when a getMitreData action is dispatched.
+   * Retrieves Mitre data from the service and dispatches a success action with the retrieved data.
+   * @type {Observable&lt;Action&gt;}
+   */
   public getMitreData &#x3D; createEffect(() &#x3D;&gt;
     this.actions$.pipe(
       ofType(getMitreData),
@@ -294,11 +362,24 @@ export class HubEffects {
         return this.hubService
           .getMitreData$()
           .pipe(
-            map((response) &#x3D;&gt; getMitreDataSuccess({mitreAttackData: response}))
+            map((response) &#x3D;&gt; getMitreDataSuccess({ mitreAttackData: this.hubService.mapMitreData(response) }))
           );
       })
     )
   );
+
+  /**
+   * Effect triggered when a filterMitreData action is dispatched.
+   * Dispatches a success action with the filtered Mitre data.
+   * @type {Observable&lt;Action&gt;}
+   */
+  public filterMitreData &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(filterMitreData),
+      switchMap(({ mitreAttackData, filter }) &#x3D;&gt; of(filterMitreDataSuccess({ mitreAttackData, filter })))
+    )
+  );
+
 
 }
 </code></pre>

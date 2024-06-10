@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Effects for managing user-related actions.</p>
+
+            </p>
 
 
 
@@ -162,12 +169,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/modules/user/store/user.effects.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/modules/user/store/user.effects.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the UserEffects instance.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -176,6 +185,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -190,6 +200,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Observable stream of actions dispatched in the application.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -202,6 +216,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The router instance for navigation.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>userService</td>
@@ -214,6 +232,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The user service for managing user state.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -249,10 +271,9 @@
       ofType(login),
       switchMap(({ user }) &#x3D;&gt;
         this.userService.login(user).pipe(
-          map(( user : UserModel ) &#x3D;&gt; {
-            return loginSuccess(
-              { user }
-            );
+          map((user: UserModel) &#x3D;&gt; {
+            // Dispatch loginSuccess action with the logged-in user
+            return loginSuccess({ user });
           })
         )
       )
@@ -262,10 +283,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/modules/user/store/user.effects.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/core/modules/user/store/user.effects.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Effect triggered when a login action is dispatched.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -275,32 +302,43 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;;
-import { Router } from &quot;@angular/router&quot;;
-import { Actions, createEffect, ofType } from &quot;@ngrx/effects&quot;;
-import { switchMap, map } from &quot;rxjs&quot;;
-import { login, loginSuccess } from &quot;./user.actions&quot;;
-import { UserService } from &quot;../service/user.service&quot;;
-import { UserModel } from &quot;../models/user.model&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Actions, ofType, createEffect } from &#x27;@ngrx/effects&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { switchMap, map } from &#x27;rxjs/operators&#x27;;
+import { UserModel } from &#x27;../models/user.model&#x27;;
+import { UserService } from &#x27;../service/user.service&#x27;;
+import { login, loginSuccess } from &#x27;./user.actions&#x27;;
 
+/**
+ * Effects for managing user-related actions.
+ */
 @Injectable()
 export class UserEffects {
-
+  /**
+   * Initializes the UserEffects instance.
+   * @param {Actions} action$ Observable stream of actions dispatched in the application.
+   * @param {Router} router The router instance for navigation.
+   * @param {UserService} userService The user service for managing user state.
+   */
   constructor(
     private action$: Actions,
     private router: Router,
     private userService: UserService
   ) {}
 
+  /**
+   * Effect triggered when a login action is dispatched.
+   * @type {Observable&lt;Action&gt;}
+   */
   public login$ &#x3D; createEffect(() &#x3D;&gt;
     this.action$.pipe(
       ofType(login),
       switchMap(({ user }) &#x3D;&gt;
         this.userService.login(user).pipe(
-          map(( user : UserModel ) &#x3D;&gt; {
-            return loginSuccess(
-              { user }
-            );
+          map((user: UserModel) &#x3D;&gt; {
+            // Dispatch loginSuccess action with the logged-in user
+            return loginSuccess({ user });
           })
         )
       )

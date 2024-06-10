@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Represents the DeasComponent class.
+This component is responsible for rendering the Deas view.</p>
+
+    </p>
 
 
 
@@ -193,19 +201,22 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { UserModel } from &#x27;../../core/modules/user/models/user.model&#x27;;
-import { UserFacade } from &#x27;../../core/modules/user/store/user.facade&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
-
+/**
+ * Array of modules used in the Deas component.
+ * @type {Array&lt;Modules&gt;}
+ */
 const MODULES_CORE_DEAS &#x3D; [
   RouterModule,
   CommonModule
 ]
 
 
-
+/**
+ * Represents the DeasComponent class.
+ * This component is responsible for rendering the Deas view.
+ */
 @Component({
   selector: &#x27;app-deas&#x27;,
   standalone: true,
@@ -255,7 +266,7 @@ export class DeasComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><router-outlet /></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DeasComponent', 'selector': 'app-deas'},{'name': 'HubComponent', 'selector': 'app-hub'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'UserLoginSystemComponent', 'selector': 'app-user-login-system'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'ChipComponent', 'selector': 'app-chip'},{'name': 'ChipsetComponent', 'selector': 'app-chip-set'},{'name': 'ClusterComponent', 'selector': 'app-cluster'},{'name': 'DeasComponent', 'selector': 'app-deas'},{'name': 'HubComponent', 'selector': 'app-hub'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MitreAttackComponent', 'selector': 'app-mitre-attack'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'UserLoginSystemComponent', 'selector': 'app-user-login-system'}];
     var DIRECTIVES = [{'name': 'TooltipDirective', 'selector': '[tooltip]'}];
     var ACTUAL_COMPONENT = {'name': 'DeasComponent'};
 </script>

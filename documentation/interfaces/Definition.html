@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface for the Definition related to Mitre Attack data.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -196,96 +203,107 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface MitreAttackData {
-  type: string
-  id: string
-  objects: MitreAttackInfo[]
-  spec_version: string
+  type: string;
+  id: string;
+  objects: MitreAttackInfo[];
+  spec_version: string;
 }
 
+/**
+ * Interface for the Mitre Attack information.
+ */
 export interface MitreAttackInfo {
-  tactic_refs: string[]
-  object_marking_refs: string[]
-  id: string
-  type: MitreType
-  created: string
-  created_by_ref: string
-  external_references: ExternalReference[]
-  modified: string
-  name: string
-  description: string
-  x_mitre_version: string
-  x_mitre_attack_spec_version: string
-  x_mitre_modified_by_ref: string
-  x_mitre_domains: string[]
-  x_mitre_deprecated: boolean
-  revoked: boolean
-  x_mitre_platforms: string[]
-  x_mitre_aliases: string[]
-  labels: string[]
-  x_mitre_contributors: string[]
-  x_mitre_shortname: string
-  kill_chain_phases: KillChainPhase[]
-  x_mitre_detection: string
-  x_mitre_is_subtechnique: boolean
-  x_mitre_data_sources: string[]
-  x_mitre_defense_bypassed: string[]
-  x_mitre_permissions_required: string[]
-  x_mitre_remote_support: boolean
-  x_mitre_system_requirements: string[]
-  x_mitre_impact_type: string[]
-  x_mitre_effective_permissions: string[]
-  x_mitre_network_requirements: boolean
-  relationship_type: Relationship_type
-  source_ref: string
-  target_ref: string
-  x_mitre_data_source_ref: string
-  aliases: string[]
-  first_seen: string
-  last_seen: string
-  x_mitre_first_seen_citation: string
-  x_mitre_last_seen_citation: string
-  x_mitre_collection_layers: string[]
-  identity_class: string
-  definition: Definition
+  tactic_refs: string[];
+  object_marking_refs: string[];
+  id: string;
+  type: MitreType;
+  created: string;
+  created_by_ref: string;
+  external_references: ExternalReference[];
+  modified: string;
+  name: string;
+  description: string;
+  x_mitre_version: string;
+  x_mitre_attack_spec_version: string;
+  x_mitre_modified_by_ref: string;
+  x_mitre_domains: string[];
+  x_mitre_deprecated: boolean;
+  revoked: boolean;
+  x_mitre_platforms: string[];
+  x_mitre_aliases: string[];
+  labels: string[];
+  x_mitre_contributors: string[];
+  x_mitre_shortname: string;
+  kill_chain_phases: KillChainPhase[];
+  x_mitre_detection: string;
+  x_mitre_is_subtechnique: boolean;
+  x_mitre_data_sources: string[];
+  x_mitre_defense_bypassed: string[];
+  x_mitre_permissions_required: string[];
+  x_mitre_remote_support: boolean;
+  x_mitre_system_requirements: string[];
+  x_mitre_impact_type: string[];
+  x_mitre_effective_permissions: string[];
+  x_mitre_network_requirements: boolean;
+  relationship_type: RelationshipType;
+  source_ref: string;
+  target_ref: string;
+  x_mitre_data_source_ref: string;
+  aliases: string[];
+  first_seen: string;
+  last_seen: string;
+  x_mitre_first_seen_citation: string;
+  x_mitre_last_seen_citation: string;
+  x_mitre_collection_layers: string[];
+  identity_class: string;
+  definition: Definition;
   definition_type: string;
 }
 
+/**
+ * Interface for external references related to Mitre Attack data.
+ */
 export interface ExternalReference {
-  source_name: string
-  description: string
-  url: string
-  external_id: string
+  source_name: string;
+  description: string;
+  url: string;
+  external_id: string;
 }
 
+/**
+ * Interface for the Kill Chain Phase related to Mitre Attack data.
+ */
 export interface KillChainPhase {
-  kill_chain_name: string
-  phase_name: string
+  kill_chain_name: string;
+  phase_name: string;
 }
 
+/**
+ * Interface for the Definition related to Mitre Attack data.
+ */
 export interface Definition {
-  statement: string
+  statement: string;
 }
 
+/**
+ * Type for Mitre Attack data type.
+ */
 export type MitreType &#x3D;
-&#x27;bundle&#x27; |
-&#x27;marking-definition&#x27; |
-&#x27;definition&#x27; |
-&#x27;x-mitre-matrix&#x27; |
-&#x27;x-mitre-tactic&#x27; |
-&#x27;course-of-action&#x27; |
-&quot;tool&quot; |
-&quot;attack-pattern&quot; |
-&quot;relationship &quot; |
-&quot;malware&quot;
+  | &#x27;bundle&#x27;
+  | &#x27;marking-definition&#x27;
+  | &#x27;definition&#x27;
+  | &#x27;x-mitre-matrix&#x27;
+  | &#x27;x-mitre-tactic&#x27;
+  | &#x27;course-of-action&#x27;
+  | &#x27;tool&#x27;
+  | &#x27;attack-pattern&#x27;
+  | &#x27;relationship&#x27;
+  | &#x27;malware&#x27;;
 
-
-
-export type Relationship_type &#x3D;
-&#x27;mitigates&#x27; |
-&#x27;uses&#x27;|
-&#x27;detects&#x27; |
-&#x27;subtechnique-of&#x27;
-
+/**
+ * Type for Relationship type in Mitre Attack data.
+ */
+export type RelationshipType &#x3D; &#x27;mitigates&#x27; | &#x27;uses&#x27; | &#x27;detects&#x27; | &#x27;subtechnique-of&#x27;;
 </code></pre>
     </div>
 </div>

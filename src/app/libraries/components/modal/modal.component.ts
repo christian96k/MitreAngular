@@ -4,10 +4,17 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 
 
-const UI_MODAL = [
+/**
+ * Array containing UI modal components.
+ * @type {typeof CardComponent[]}
+ */
+const UI_MODAL: typeof CardComponent[] = [
   CardComponent
-]
+];
 
+/**
+ * Component representing a modal.
+ */
 @Component({
   selector: 'app-modal',
   standalone: true,
@@ -19,7 +26,10 @@ const UI_MODAL = [
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-
+  /**
+   * Configuration for the modal component.
+   * @type {ModalConfig}
+   */
   @Input() modalConfig:ModalConfig = {} as ModalConfig;
 
 }

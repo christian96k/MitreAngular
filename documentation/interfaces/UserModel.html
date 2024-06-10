@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a user model.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -236,6 +243,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s email address.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -269,6 +282,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates whether the user&#39;s email address has been verified.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -302,6 +321,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s family name.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -335,6 +360,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s given name.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -368,6 +399,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s full name.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -401,6 +438,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s nickname.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -434,6 +477,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The URL of the user&#39;s picture.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -467,6 +516,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The user&#39;s unique identifier.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -500,6 +555,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The date and time when the user&#39;s profile was last updated.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -508,38 +569,88 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface UserModel {
-  given_name: string,
-  family_name: string,
-  nickname: string,
-  name: string,
-  picture: string,
-  updated_at: string,
-  email: string,
-  email_verified: boolean,
-  sub: string
+  /**
+   * The user&#x27;s given name.
+   * @type {string}
+   */
+  given_name: string;
+
+  /**
+   * The user&#x27;s family name.
+   * @type {string}
+   */
+  family_name: string;
+
+  /**
+   * The user&#x27;s nickname.
+   * @type {string}
+   */
+  nickname: string;
+
+  /**
+   * The user&#x27;s full name.
+   * @type {string}
+   */
+  name: string;
+
+  /**
+   * The URL of the user&#x27;s picture.
+   * @type {string}
+   */
+  picture: string;
+
+  /**
+   * The date and time when the user&#x27;s profile was last updated.
+   * @type {string}
+   */
+  updated_at: string;
+
+  /**
+   * The user&#x27;s email address.
+   * @type {string}
+   */
+  email: string;
+
+  /**
+   * Indicates whether the user&#x27;s email address has been verified.
+   * @type {boolean}
+   */
+  email_verified: boolean;
+
+  /**
+   * The user&#x27;s unique identifier.
+   * @type {string}
+   */
+  sub: string;
 }
-export interface UserCredits {
-  PM: number;
-  AiGT: number;
-}
 
-// export interface LoginPayload {
-//   email: string;
-//   password: string;
-// }
-
-// export interface LoginResponse extends User {
-//   token: string;
-// }
-
-
+/**
+ * Interface representing an error response from Auth0.
+ */
 export interface Auth0Error {
+  /**
+   * The type of error.
+   * @type {string}
+   */
   error: string;
+
+  /**
+   * Additional description of the error.
+   * @type {string | undefined}
+   */
   error_description?: string;
+
+  /**
+   * A message describing the error.
+   * @type {string | undefined}
+   */
   message?: string;
 }
 
-export type Auth0ErrorType &#x3D; &#x27;login_required&#x27; | &#x27;consent_required&#x27;| &#x27;interaction_required&#x27;;
+/**
+ * Type representing possible error types from Auth0.
+ */
+export type Auth0ErrorType &#x3D; &#x27;login_required&#x27; | &#x27;consent_required&#x27; | &#x27;interaction_required&#x27;;
 </code></pre>
     </div>
 </div>

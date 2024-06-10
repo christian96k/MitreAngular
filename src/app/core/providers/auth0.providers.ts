@@ -2,6 +2,10 @@ import { importProvidersFrom } from '@angular/core';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from '../../../environments/environment';
 
+/**
+ * Providers for configuring Auth0 authentication.
+ * @type {Auth0Providers}
+ */
 export const auth0Providers = importProvidersFrom(
   AuthModule.forRoot({
     domain: environment.auth0.domain,
@@ -11,4 +15,3 @@ export const auth0Providers = importProvidersFrom(
     },
   })
 );
-

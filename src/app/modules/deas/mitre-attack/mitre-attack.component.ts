@@ -1,4 +1,7 @@
-import { HackersMock, HackerType } from './../../../shared/constants/groupHackers.model';
+import {
+  HackersMock,
+  HackerType,
+} from './../../../shared/constants/groupHackers.model';
 import { Component, inject } from '@angular/core';
 import { ChipComponent } from '../../../libraries/components/chip/chip.component';
 import { CardComponent } from '../../../libraries/components/card/card.component';
@@ -14,85 +17,165 @@ import { LoaderComponent } from '../../../libraries/components/loader/loader.com
 import { CardConfig } from '../../../libraries/models/card.model';
 import { MitreAttackService } from './services/mitre-attack.service';
 
-
-
+/**
+ * Array containing components related to the UI kit Mitre Attack Component.
+ * @type {Array<Components>}
+ */
 const UI_MITRE_ATTACK = [
   ChipComponent,
   CardComponent,
   ChipsetComponent,
   ClusterComponent,
   LoaderComponent,
-]
+];
 
+/**
+ * Component for displaying Mitre Attack information.
+ */
 @Component({
   selector: 'app-mitre-attack',
   standalone: true,
-  imports: [
-    ...UI_MITRE_ATTACK,
-    CommonModule
-  ],
+  imports: [...UI_MITRE_ATTACK, CommonModule],
   templateUrl: './mitre-attack.component.html',
-  styleUrl: './mitre-attack.component.scss'
+  styleUrl: './mitre-attack.component.scss',
 })
+/**
+ * Represents the Mitre Attack Component.
+ */
+/**
+ * Represents the Mitre Attack Component.
+ */
 export class MitreAttackComponent {
-
-
-  //  services
+  /**
+   * Facade for interacting with the Hub module store.
+   * @private
+   */
   private hubFacade = inject(HubFacade);
-  public hubService  = inject(HubService);
-  public mitreAttackService  = inject(MitreAttackService);
 
+  /**
+   * Hub service for Hub-specific operations.
+   * @public
+   */
+  public hubService = inject(HubService);
 
-  // obeservers
+  /**
+   * Service for Mitre Attack operations.
+   * @public
+   */
+  public mitreAttackService = inject(MitreAttackService);
+
+  /**
+   * Subject for managing the destruction of observables.
+   * @private
+   */
   private destroy$ = new Subject<void>();
-  public mitreAttackInfo$: Observable<ExtendedMitreAttackInfo[] | null> = this.hubFacade.mitreData$;
 
+  /**
+   * Observable that provides the extended Mitre Attack information or null.
+   * @public
+   */
+  public mitreAttackInfo$: Observable<ExtendedMitreAttackInfo[] | null> =
+    this.hubFacade.mitreData$;
 
-  // data set
+  /**
+   * Current hacker data being used for attacks.
+   * @public
+   */
   public attackHacker = HackersMock.GENERIC;
+
+  /**
+   * Configurations for clusters.
+   * @public
+   */
   public clusters: ClusterConfig[] = [];
+
+  /**
+   * Configurations for cards.
+   * @public
+   */
   public cards: CardConfig[] = [];
+
+  /**
+   * Filtered Mitre Attack data.
+   * @public
+   */
   public mitreDataFiltered: ExtendedMitreAttackInfo[] = [];
 
+  /**
+   * Mock configuration for a chip.
+   * @public
+   */
+  public chipConfig = {
+    label: 'Identified as malicious actor',
+    isDark: true,
+    icon: 'virus',
+  };
 
-  // mock
-  public chipConfig = { label:'Identificato come attore malevolo', isDark:true, icon:'virus'}
+  /**
+   * Subscription to the Mitre Data.
+   * Updates the filtered Mitre data and clusters based on the received data.
+   * @public
+   */
+  public mitraDataSubscription: Subscription = this.hubFacade.mitreData$
+    .pipe(filter(Boolean), takeUntil(this.destroy$))
+    .subscribe((data: ExtendedMitreAttackInfo[]) => {
+      this.mitreDataFiltered = data;
+      this.clusters = this.mitreDataFiltered.map(
+        (mitreAttackInfo: ExtendedMitreAttackInfo) =>
+          this.mitreAttackService.createMitreCluster(mitreAttackInfo, this)
+      );
+    });
 
+  /**
+   * Subscription to the Mitre Data Filter.
+   * Updates the attack hacker based on the received filter.
+   * @public
+   */
+  public filteDataSubscription: Subscription = this.hubFacade.mitreDataFilter$
+    .pipe(filter(Boolean), takeUntil(this.destroy$))
+    .subscribe((filter: HackerType) => {
+      this.attackHacker = HackersMock[filter];
+    });
 
-  // Subscription to the Mitre Data
-  public mitraDataSubscription: Subscription = this.hubFacade.mitreData$.pipe(
-    filter(Boolean),
-    takeUntil(this.destroy$)
-  ).subscribe((data: ExtendedMitreAttackInfo[]) => {
-    this.mitreDataFiltered = data;
-    this.clusters = this.mitreDataFiltered.map((mitreAttackInfo: ExtendedMitreAttackInfo) => this.mitreAttackService.createMitreCluster(mitreAttackInfo, this));
-  });
+  /**
+   * Filters the Mitre Data based on the hacker type.
+   * @param hackerType The type of hacker to filter.
+   * @public
+   */
+  filter(hackerType: HackerType): void {
+    this.hubFacade.filtreMitreData(this.mitreDataFiltered, hackerType);
+  }
 
-  public filteDataSubscription: Subscription = this.hubFacade.mitreDataFilter$.pipe(
-    filter(Boolean),
-    takeUntil(this.destroy$)
-  ).subscribe((filter: HackerType) => {
-    this.attackHacker = HackersMock[filter];
-  });
-
-
-
-
-  public selectMitreCluster(cluster: ClusterConfig, mitreComponent: MitreAttackComponent): void {
+  /**
+   * Selects a Mitre cluster and updates the active state of the clusters and cards.
+   * @param cluster - The cluster to select.
+   * @param mitreComponent - The MitreAttackComponent instance.
+   */
+  public selectMitreCluster(
+    cluster: ClusterConfig,
+    mitreComponent: MitreAttackComponent
+  ): void {
     this.clusters = this.clusters.map((_cluster) => {
       if (_cluster.id === cluster.id) {
-        return { ..._cluster, active: !cluster.active, opaque:  false };
+        return { ..._cluster, active: !cluster.active, opaque: false };
       } else {
         const someActive = this.clusters.some((cluster) => cluster.active);
-        return { ..._cluster, active: false, opaque: !someActive ? true: false };
+        return {
+          ..._cluster,
+          active: false,
+          opaque: !someActive ? true : false,
+        };
       }
     });
 
-    if(cluster.techniques?.length )
-      this.cards = !cluster.active ? cluster.techniques.map((technique: ExtendedMitreAttackInfo) => this.mitreAttackService.createMitreTechniques(technique, mitreComponent)) : [];
-
+    if (cluster.techniques?.length)
+      this.cards = !cluster.active
+        ? cluster.techniques.map((technique: ExtendedMitreAttackInfo) =>
+            this.mitreAttackService.createMitreTechniques(
+              technique,
+              mitreComponent
+            )
+          )
+        : [];
   }
-
-
-
 }

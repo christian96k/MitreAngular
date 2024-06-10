@@ -1,13 +1,19 @@
 import { Component, input } from '@angular/core';
 import { ClusterConfig } from '../../models/cluster.model';
 import { CommonModule } from '@angular/common';
-import { ExtendedMitreAttackInfo } from '../../../modules/deas/hub/models/hub.models';
 import { TooltipDirective } from '../../directives/tooltip.directive';
 
-const CLUSTER_DIRECTIVES = [
+/**
+ * Array containing cluster directives.
+ * @type {typeof TooltipDirective[]}
+ */
+const CLUSTER_DIRECTIVES: typeof TooltipDirective[] = [
   TooltipDirective
-]
+];
 
+/**
+ * Component representing a cluster.
+ */
 @Component({
   selector: 'app-cluster',
   standalone: true,
@@ -19,6 +25,10 @@ const CLUSTER_DIRECTIVES = [
   styleUrl: './cluster.component.scss'
 })
 export class ClusterComponent {
+/**
+ * Configuration for the cluster component.
+ * @type {ClusterConfig}
+ */
   public clusterConfig = input.required<ClusterConfig>();
 
 }
