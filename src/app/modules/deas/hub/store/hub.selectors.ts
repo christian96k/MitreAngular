@@ -7,3 +7,8 @@ export const mitreData$ = createSelector(
   hubFeature,
   ({ data }) => data
 );
+
+export const mitreDataFilter$ = createSelector(
+  hubFeature,
+  ({ filter }) => filter
+);

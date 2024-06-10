@@ -9,7 +9,6 @@ import { MitreAttackData } from '../../../shared/model/mitre.model';
 import { UserModel } from '../../../core/modules/user/models/user.model';
 import { UserFacade } from '../../../core/modules/user/store/user.facade';
 import { TooltipDirective } from '../../../libraries/directives/tooltip.directive';
-import { HACKERS } from '../../../shared/constants/groupHackers.model';
 import { ExtendedMitreAttackInfo } from './models/hub.models';
 import { HubService } from './services/hub.service';
 import { LoaderComponent } from '../../../libraries/components/loader/loader.component';
@@ -18,6 +17,7 @@ import { CardAction, CardConfig, CardIcon } from '../../../libraries/models/card
 import { ClusterComponent } from '../../../libraries/components/cluster/cluster.component';
 import { ClusterConfig } from '../../../libraries/models/cluster.model';
 import { MitreAttackComponent } from '../mitre-attack/mitre-attack.component';
+import { HackerType } from '../../../shared/constants/groupHackers.model';
 
 
 
@@ -64,6 +64,8 @@ export class HubComponent {
   private destroy$ = new Subject<void>();
   public userInfo$: Observable<UserModel> = this.userFacade.user$;
   public mitreDataInfo$: Observable<ExtendedMitreAttackInfo[] | null> = this.hubFacade.mitreData$;
+  public mitreDataFilter$: Observable<HackerType> = this.hubFacade.mitreDataFilter$;
+
 
   // data set
   public mitreData: MitreAttackData|null = null;
@@ -72,6 +74,7 @@ export class HubComponent {
 
 
   public clusters: ClusterConfig[] = [];
+  public hackerType = HackerType;
 
 
   constructor(
@@ -85,12 +88,15 @@ export class HubComponent {
     filter(Boolean),
     takeUntil(this.destroy$)
   ).subscribe((data: ExtendedMitreAttackInfo[]) => {
-    // this.mitreHerarchyData = this.hubService.filterByActorRecursive(data, HACKERS.APT28);;
-    // this.mitreHerarchyDataAPT28 = this.hubService.filterByActorRecursive(this.mitreHerarchyData, HACKERS.APT28);
+    this.mitreHerarchyData = data;
     console.log("tacticsWithTechniquesAndSubtechniquesAndUses", this.mitreHerarchyData);
     console.log("tacticsWithTechniquesAndSubtechniquesAndUsesFiltered", this.mitreHerarchyDataAPT28);
   });
 
+
+  filter(hackerType:HackerType){
+    this.hubFacade.filtreMitreData(this.mitreHerarchyData, hackerType);
+  }
 
   // logout interaction
   public onLogout():void{

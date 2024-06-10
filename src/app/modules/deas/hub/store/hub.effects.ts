@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, switchMap } from "rxjs";
+import { map, of, switchMap } from "rxjs";
 import { HubService } from "../services/hub.service";
-import { getMitreData, getMitreDataSuccess } from "./hub.actions";
+import { filterMitreData, filterMitreDataSuccess, getMitreData, getMitreDataSuccess } from "./hub.actions";
 
 /**
  * Effects class for the Hub module.
@@ -27,6 +27,13 @@ export class HubEffects {
           );
       })
     )
+  );
+
+  public filterMitreData = createEffect(() =>
+    this.actions$.pipe(
+      ofType(filterMitreData),
+      switchMap(({mitreAttackData, filter}) => (of(filterMitreDataSuccess({mitreAttackData, filter})))
+    ))
   );
 
 }

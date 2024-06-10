@@ -1,3 +1,4 @@
+import { HackersMock, HackerType } from './../../../shared/constants/groupHackers.model';
 import { Component, inject } from '@angular/core';
 import { ChipComponent } from '../../../libraries/components/chip/chip.component';
 import { CardComponent } from '../../../libraries/components/card/card.component';
@@ -10,7 +11,6 @@ import { HubService } from '../hub/services/hub.service';
 import { HubFacade } from '../hub/store/hub.facade';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../../libraries/components/loader/loader.component';
-import { APT28, HACKERS } from '../../../shared/constants/groupHackers.model';
 import { CardConfig } from '../../../libraries/models/card.model';
 import { MitreAttackService } from './services/mitre-attack.service';
 
@@ -49,7 +49,7 @@ export class MitreAttackComponent {
 
 
   // data set
-  public attackHacker = APT28;
+  public attackHacker = HackersMock.GENERIC;
   public clusters: ClusterConfig[] = [];
   public cards: CardConfig[] = [];
   public mitreDataFiltered: ExtendedMitreAttackInfo[] = [];
@@ -64,9 +64,15 @@ export class MitreAttackComponent {
     filter(Boolean),
     takeUntil(this.destroy$)
   ).subscribe((data: ExtendedMitreAttackInfo[]) => {
-
-    this.mitreDataFiltered = this.hubService.filterByActorRecursive(data, HACKERS.APT28);
+    this.mitreDataFiltered = data;
     this.clusters = this.mitreDataFiltered.map((mitreAttackInfo: ExtendedMitreAttackInfo) => this.mitreAttackService.createMitreCluster(mitreAttackInfo, this));
+  });
+
+  public filteDataSubscription: Subscription = this.hubFacade.mitreDataFilter$.pipe(
+    filter(Boolean),
+    takeUntil(this.destroy$)
+  ).subscribe((filter: HackerType) => {
+    this.attackHacker = HackersMock[filter];
   });
 
 

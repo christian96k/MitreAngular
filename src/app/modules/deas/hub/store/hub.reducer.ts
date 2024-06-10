@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
-import { MitreAttackData } from "../../../../shared/model/mitre.model";
-import { getMitreDataSuccess } from "./hub.actions";
+import { filterMitreDataSuccess, getMitreDataSuccess } from "./hub.actions";
 import { ExtendedMitreAttackInfo } from "../models/hub.models";
+import { HackerType } from "../../../../shared/constants/groupHackers.model";
 
 /**
  * Key representing the feature module for the hub list.
@@ -10,16 +10,20 @@ import { ExtendedMitreAttackInfo } from "../models/hub.models";
  */
 export const HubListFeatureKey = 'hub';
 
-
 export interface HubState {
   data: ExtendedMitreAttackInfo[] | null;
+  filter: HackerType;
+
 }
 
 const initialState: HubState = {
-  data: null
+  data: null,
+  filter: HackerType.APT28
 };
 
 export const hubReducer = createReducer(
   initialState,
   on(getMitreDataSuccess, (state, { mitreAttackData }) => ({ ...state, data: mitreAttackData })),
+  on(filterMitreDataSuccess, (state, { mitreAttackData, filter }) => ({ ...state, data: mitreAttackData, filter: filter })),
+
 );

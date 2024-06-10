@@ -1,5 +1,4 @@
 
-//#region change theme base on product
 @mixin generate-style($style-key, $color-name, $is-component: false) {
   #{$style-key}: $color-name;
   @each $product-name in map_keys($products) {
@@ -17,4 +16,3 @@
 }
 
 
-//#endregion change theme base on product

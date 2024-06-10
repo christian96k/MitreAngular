@@ -24,5 +24,10 @@ button{
     @include generate-style("color", white);
   }
 
+  &.active{
+    @include generate-style("background-color", secondary);
+    @include generate-style("color", white);
+  }
+
 
 }
