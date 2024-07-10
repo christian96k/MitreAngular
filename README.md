@@ -1,4 +1,4 @@
-# DeasDemo
+# Mitre Demo
 An application that organizes and displays the tactics, techniques, and subtechniques of the Mitre ATT&amp;CK framework, including usage relationships with various malicious actors (e.g., APT28). This application allows filtering and visualization of data based on specific threat actor groups, making threat analysis easier.
 
 
@@ -11,13 +11,8 @@ An application that organizes and displays the tactics, techniques, and subtechn
 ## JSON data
 https://github.com/mitre/cti/blob/master/enterprise-attack/enterprise-attack.json
 
-## Figma Output
-https://www.figma.com/proto/526imlMQDt7KkcfgAeKcd5/DEAS---AI-SOC-FW?page-id=0%3A1&node-id=977-49407&viewport=-9649%2C-10203%2C0.3&t=l5l2apWZhioSA6RT-1&scaling=scale-down&starting-point-node-id=722%3A60720
 
-
-
-
-# DeasDemo Project
+# MitreDemo Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.
 
